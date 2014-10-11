@@ -1,0 +1,5 @@
+# 1.2192 m = 4 ft
+inflation_layer:
+    inflation_radius: 2.0
+obstacle_layer:
+    observation_sources: []
