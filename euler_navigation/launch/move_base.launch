@@ -6,5 +6,7 @@
             file="$(find euler_navigation)/params/costmap_common.yaml" />
         <rosparam command="load"
             file="$(find euler_navigation)/params/move_base.yaml" />
+        <rosparam command="load" ns="DWAPlannerROS"
+            file="$(find euler_navigation)/params/dwa.yaml" />
     </node>
 </launch>

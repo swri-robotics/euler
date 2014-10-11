@@ -1,0 +1,47 @@
+#forward motion
+# max velocity: 1 m/sec
+# max acceleration: 1 m/sec^2
+min_vel_x: 0.0
+max_vel_x: 1.0
+acc_lim_x: 1.0
+
+#side motion        
+# max velocity = 0.8 * max forward velocity = 0.8m/sec
+# max acceleration: 0.8 m/sec^2
+min_vel_y: -0.8
+max_vel_y: 0.8
+acc_lim_y: 0.8
+
+#yaw motion
+# max velocity =  0.5 radians/sec
+# max acceleration = 1 radians/sec^2
+min_rot_vel: -0.5
+max_rot_vel: 0.5
+acc_lim_theta: 1.0
+
+
+#rot_stopped_vel: 0.1
+#acc_limit_trans: 0.1
+#angular_sim_granularity: 0.1,
+#forward_point_distance: 0.325
+#goal_distance_bias: 24.0
+#max_scaling_factor: 0.2,
+#max_trans_vel: 0.55
+#min_trans_vel: 0.1,
+#occdist_scale: 0.01
+#oscillation_reset_angle: 0.2,
+#oscillation_reset_dist: 0.05
+#path_distance_bias: 32.0
+#prune_plan: false
+#scaling_speed: 0.25
+#sim_granularity: 0.025
+#sim_time: 1.7,
+#stop_time_buffer: 0.2
+#trans_stopped_vel: 0.1
+#use_dwa: true
+#vth_samples: 20
+#vx_samples: 3,
+#vy_samples: 10
+#xy_goal_tolerance: 0.1
+#yaw_goal_tolerance: 0.1
+
