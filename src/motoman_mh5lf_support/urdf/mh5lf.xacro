@@ -1,8 +1,0 @@
-<?xml version="1.0" ?>
-
-<robot name="motoman_mh5lf" xmlns:xacro="http://ros.org/wiki/xacro">
-	<xacro:include filename="$(find motoman_mh5lf_support)/urdf/mh5lf_macro.xacro" />
-	<xacro:motoman_mh5lf prefix=""/>
-</robot>
-
-
