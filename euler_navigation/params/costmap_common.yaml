@@ -3,3 +3,4 @@ inflation_layer:
     inflation_radius: 2.0
 obstacle_layer:
     observation_sources: []
+publish_frequency: 1.0

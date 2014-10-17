@@ -8,5 +8,8 @@
             file="$(find euler_navigation)/params/move_base.yaml" />
         <rosparam command="load" ns="DWAPlannerROS"
             file="$(find euler_navigation)/params/dwa.yaml" />
+
+        <remap from="cmd_vel" to="/euler/cmd_vel"/>
+        <remap from="odom" to="/euler/odom"/>
     </node>
 </launch>
