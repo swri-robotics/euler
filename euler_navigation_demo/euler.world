@@ -1,3 +1,10 @@
+define block model
+(
+  size [1.5 1.5 1.5]
+  gui_nose 0
+)
+
+
 define topurg ranger
 (
   sensor(
@@ -32,3 +39,4 @@ define euler position
 )
 
 euler( pose [ 1 0 0 180.000 ] name "euler" color "blue")
+block( pose [ 5 5 0 180.000 ] color "red")
