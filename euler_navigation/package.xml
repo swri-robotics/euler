@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<package>
+  <name>euler_navigation</name>
+  <version>0.0.0</version>
+  <description>Navigation configuration for the euler robot.</description>
+
+  <maintainer email="davidvlu@gmail.com">David V. Lu!!</maintainer>
+  <author email="davidvlu@gmail.com">David V. Lu!!</author>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>move_base</run_depend>
+</package>

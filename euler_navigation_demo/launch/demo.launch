@@ -1,0 +1,8 @@
+<launch>
+    <node name="static_tf0" pkg="tf" type="static_transform_publisher"
+        args="0 0 0 0 0 0 /map /base_link 100" />
+    <node name="static_map" pkg="map_server" type="map_server" args="$(find euler_navigation_demo)/map.yaml" />
+    <include file="$(find euler_navigation)/launch/move_base.launch"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find euler_navigation)/euler_nav.rviz"/>
+</launch>
+
