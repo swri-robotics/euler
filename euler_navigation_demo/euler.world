@@ -1,0 +1,34 @@
+define topurg ranger
+(
+  sensor(
+     range [ 0.0  30.0 ]
+     fov 270.25
+     samples 1081
+  )
+
+  color "black"
+  size [ 0.05 0.05 0.1 ]
+)
+
+define laser_assembly position
+(
+  size [0.01 0.01 0.01]
+  topurg(pose [ -1.2192 -.6096 .26 225.000 ])
+)
+
+define euler position
+(
+  size [2.4384 1.2192 0.25]
+
+  # [ xmin xmax ymin ymax zmin zmax amin amax ]
+  velocity_bounds     [-1 1 -0.8 0.8 0 0 -28 28 ]
+  acceleration_bounds [-1 1 -1     1 0 0 -54 54]
+  
+  origin [0 0 0 0]
+  gui_nose 1
+  drive "omni"
+  topurg(pose [ 1.2192 .6096 .26 45.000 ])
+  laser_assembly(pose [0 0 .26 0])
+)
+
+euler( pose [ 1 0 0 180.000 ] name "euler" color "blue")
