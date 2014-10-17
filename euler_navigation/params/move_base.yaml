@@ -10,7 +10,9 @@ global_costmap:
     - {name: obstacle_layer, type: 'costmap_2d::ObstacleLayer'}
     - {name: inflation_layer, type: 'costmap_2d::InflationLayer'}
 local_costmap:
-    plugins: []
+    plugins:
+    - {name: obstacle_layer, type: 'costmap_2d::ObstacleLayer'}
+    - {name: inflation_layer, type: 'costmap_2d::InflationLayer'}
     origin_x: -5
     origin_y: -5
     global_frame: /odom

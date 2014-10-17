@@ -2,5 +2,18 @@
 inflation_layer:
     inflation_radius: 2.0
 obstacle_layer:
-    observation_sources: []
+    observation_sources: laser1 laser2
+    laser1: 
+        topic: /euler/scan1
+        data_type: LaserScan
+        sensor_frame: /robot_0/base_laser_link
+        clearing: true
+        marking: true
+    laser2:
+        topic: /euler/scan2
+        data_type: LaserScan
+        sensor_frame: /robot_1/base_laser_link
+        clearing: true
+        marking: true
+    obstacle_range: 10
 publish_frequency: 1.0
