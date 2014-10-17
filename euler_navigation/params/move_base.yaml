@@ -2,7 +2,8 @@ base_global_planner: navfn/NavfnROS #global_planner/GlobalPlanner
 base_local_planner: dwa_local_planner/DWAPlannerROS
 # 1.2192 m = 4 ft
 # 2.4384 m = 8 ft
-footprint: [[1.2192,2.4384],[-1.2192,2.4384],[-1.2192,-2.4384],[1.2192,-2.4384]]
+# 0.6096 m = 2 ft
+footprint: [[1.2192,0.6096],[-1.2192,0.6096],[-1.2192,-0.6096],[1.2192,-0.6096]]
 global_costmap:
     plugins:
     - {name: static_layer, type: 'costmap_2d::StaticLayer'}
@@ -12,4 +13,6 @@ local_costmap:
     plugins: []
     origin_x: -5
     origin_y: -5
+    global_frame: /odom
+    rolling_window: true
 
