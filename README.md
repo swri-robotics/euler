@@ -8,10 +8,10 @@ SwRI mobile manipulation platform
 Navigation Interface
 --------------------
 
-In its current state, the navigation configuration assumes a number of different topics in the euler namespace, namely
- - `/euler/scan1` and `/euler/scan2` - the two LaserScans provided by the laser scanners on the base
- - `/euler/cmd_vel` - Twist message used by the base for driving
- - `/euler/odom` - Odometry messages
+In its current state, the navigation configuration assumes a number of different topics in the euler namespace
+ - `/euler/scan1` and `/euler/scan2` - navigation subscribes to the two LaserScans provided by the laser scanners on the base
+ - `/euler/cmd_vel` - navigation publishes the Twist message used by the base for driving
+ - `/euler/odom` - navigation subscribes to Odometry messages
 
 In addition, it also assumes that the following transforms are published. 
  - `/odom --> /base_link`
