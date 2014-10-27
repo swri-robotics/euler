@@ -1,0 +1,6 @@
+<package>
+  <description brief="vetex_support">vetex_support</description>
+  <depend package="gazebo" />
+  <author>Paul Hvass</author>
+  <license>BSD</license>
+</package>

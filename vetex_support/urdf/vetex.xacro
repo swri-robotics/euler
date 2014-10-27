@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<robot name="vetex" xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:include filename="$(find vetex_support)/urdf/vetex_macro.xacro" />
+<xacro:vetex prefix=""/>
+</robot>
