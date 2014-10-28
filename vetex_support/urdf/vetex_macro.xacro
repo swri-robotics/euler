@@ -4,16 +4,14 @@
                 <!-- link list -->
                 <link name="${prefix}base_link">
                         <visual>
-                                <origin rpy="0 0 0"/>
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/visual/base_link.stl" />
                                 </geometry>
-                                <material name="">
+                                <material name="euler_gray">
                                         <color rgba="0.75294 0.75294 0.75294 1" />
                                 </material>
                         </visual>
                         <collision>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/collision/base_link.stl" />
                                 </geometry>
@@ -21,16 +19,12 @@
                 </link>
                 <link name="${prefix}left_front_wheel">
                         <visual>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/visual/left_front_wheel.stl" />
                                 </geometry>
-                                <material name="">
-                                        <color rgba="0.75294 0.75294 0.75294 1" />
-                                </material>
+                                <material name="euler_gray"/>
                         </visual>
                         <collision>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/collision/left_front_wheel.stl" />
                                 </geometry>
@@ -38,16 +32,12 @@
                 </link>                
                 <link name="${prefix}left_rear_wheel">
                         <visual>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/visual/left_rear_wheel.stl" />
                                 </geometry>
-                                <material name="">
-                                        <color rgba="0.75294 0.75294 0.75294 1" />
-                                </material>
+                                <material name="euler_gray"/>
                         </visual>
                         <collision>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/collision/left_rear_wheel.stl" />
                                 </geometry>
@@ -55,16 +45,14 @@
                 </link>
                 <link name="${prefix}right_rear_wheel">
                         <visual>
-                                <origin xyz="0 0 0" rpy="3.1415 0 0" />
+                                <origin rpy="3.1415 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/visual/right_rear_wheel.stl" />
                                 </geometry>
-                                <material name="">
-                                        <color rgba="0.75294 0.75294 0.75294 1" />
-                                </material>
+                                <material name="euler_gray"/>
                                 </visual>
                         <collision>
-                                <origin xyz="0 0 0" rpy="3.1415 0 0" />
+                                <origin rpy="3.1415 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/collision/right_rear_wheel.stl" />
                                 </geometry>
@@ -72,16 +60,14 @@
                 </link>
                 <link name="${prefix}right_front_wheel">
                         <visual>
-                                <origin xyz="0 0 0" rpy="3.1415 0 0" />
+                                <origin rpy="3.1415 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/visual/right_front_wheel.stl" />
                                 </geometry>
-                                <material name="">
-                                        <color rgba="0.75294 0.75294 0.75294 1" />
-                                </material>
+                                <material name="euler_gray"/>
                         </visual>
                         <collision>
-                                <origin xyz="0 0 0" rpy="3.1415 0 0" />    
+                                <origin rpy="3.1415 0 0" />    
                                 <geometry> 
                                         <mesh filename="package://vetex_support/meshes/collision/right_front_wheel.stl" />
                                 </geometry>
