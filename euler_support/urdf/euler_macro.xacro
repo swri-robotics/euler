@@ -1,0 +1,96 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:include filename="$(find motoman_mh5lf_support)/urdf/mh5lf_macro.xacro" />
+<xacro:include filename="$(find vetex_support)/urdf/vetex_macro.xacro" />
+        <xacro:macro name="euler" params="prefix">
+        <xacro:vetex prefix="vetex_" />
+        <xacro:motoman_mh5lf prefix="motoman_" />
+        
+        <!--link list -->
+        <link name="base_link"> </link>
+        <link name="frame_left">
+                <visual>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                                <geometry>
+                                        <mesh filename="package://euler_support/meshes/visual/frame_left.stl" />
+                                </geometry>
+                                <material name="">
+                                        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />        
+                                </material>
+                </visual>
+                <collision>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/collision/frame_left.stl" />
+                        </geometry>
+                </collision>
+        </link>
+        <link name="frame_right">
+                <visual>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                                <geometry>
+                                        <mesh filename="package://euler_support/meshes/visual/frame_right.stl" />
+                                </geometry>
+                                <material name="">
+                                        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />        
+                                </material>
+                </visual>
+                <collision>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/collision/frame_right.stl" />
+                        </geometry>
+                </collision>
+        </link>
+        <link name="frame_top">
+                <visual>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                                <geometry>
+                                        <mesh filename="package://euler_support/meshes/visual/frame_top.stl" />
+                                </geometry>
+                                <material name="">
+                                        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />        
+                                </material>
+                </visual>
+                <collision>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/collision/frame_top.stl" />
+                        </geometry>
+                </collision>
+        </link> 
+        <joint name="frame_left" type="fixed" >
+                <parent link="base_link" />
+                <child link="frame_left" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>
+
+        <joint name="frame_right" type="fixed">
+                <parent link="base_link" />
+                <child link="frame_right" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>
+        <joint name="frame_top" type="fixed">
+                <parent link="base_link" />
+                <child link="frame_top" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>     
+         
+        <joint name="to_vetex" type="fixed">
+                <parent link="base_link" />
+                <child link="vetex_base_link" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>       
+        <joint name="to_arm" type="fixed">
+                <parent link="base_link" />
+                <child link="motoman_base_link" />
+                <origin xyz="0.067518 0 2.016" rpy="3.1415 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>
+</xacro:macro>
+</robot>
