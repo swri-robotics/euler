@@ -4,67 +4,27 @@
                 <!-- link list -->
                 <link name="${prefix}base_link">
                         <visual>
-                                <origin rpy="0 0 0"/>
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/visual/base_link.stl" />
                                 </geometry>
-                                <material name="">
+                                <material name="euler_gray">
                                         <color rgba="0.75294 0.75294 0.75294 1" />
                                 </material>
                         </visual>
                         <collision>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/collision/base_link.stl" />
                                 </geometry>
                         </collision>
                 </link>
-                <link name="${prefix}map">
-                        <visual>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
-                                <geometry>
-                                        <mesh filename="package://vetex_support/meshes/visual/map.stl" />       
-                                </geometry>
-                                <material name="">
-                                        <color rgba="0.75294 0.75294 0.75294 1" />
-                                </material>
-                        </visual>
-                        <collision>
-                                <origin xyz="0 0 0" Rpy="0 0 0" />
-                                <geometry>
-                                        <mesh filename="package://vetex_support/meshes/collision/map.stl" />    
-                                </geometry>
-                        </collision>
-                </link>
-                <link name="${prefix}odom">
-                        <visual>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
-                                <geometry>
-                                        <mesh filename="package://vetex_support/meshes/visual/odom.stl" />
-                                </geometry>
-                                <material name="">
-                                        <color rgba="0.75294 0.75294 0.75294 1" />
-                                </material> 
-                        </visual>
-                        <collision>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
-                                <geometry>
-                                        <mesh filename="package://vetex_support/meshes/collision/odom.stl" />
-                                </geometry>
-                        </collision>
-                </link>
                 <link name="${prefix}left_front_wheel">
                         <visual>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/visual/left_front_wheel.stl" />
                                 </geometry>
-                                <material name="">
-                                        <color rgba="0.75294 0.75294 0.75294 1" />
-                                </material>
+                                <material name="euler_gray"/>
                         </visual>
                         <collision>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/collision/left_front_wheel.stl" />
                                 </geometry>
@@ -72,16 +32,12 @@
                 </link>                
                 <link name="${prefix}left_rear_wheel">
                         <visual>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/visual/left_rear_wheel.stl" />
                                 </geometry>
-                                <material name="">
-                                        <color rgba="0.75294 0.75294 0.75294 1" />
-                                </material>
+                                <material name="euler_gray"/>
                         </visual>
                         <collision>
-                                <origin xyz="0 0 0" rpy="0 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/collision/left_rear_wheel.stl" />
                                 </geometry>
@@ -89,16 +45,14 @@
                 </link>
                 <link name="${prefix}right_rear_wheel">
                         <visual>
-                                <origin xyz="0 0 0" rpy="3.1415 0 0" />
+                                <origin rpy="3.1415 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/visual/right_rear_wheel.stl" />
                                 </geometry>
-                                <material name="">
-                                        <color rgba="0.75294 0.75294 0.75294 1" />
-                                </material>
+                                <material name="euler_gray"/>
                                 </visual>
                         <collision>
-                                <origin xyz="0 0 0" rpy="3.1415 0 0" />
+                                <origin rpy="3.1415 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/collision/right_rear_wheel.stl" />
                                 </geometry>
@@ -106,16 +60,14 @@
                 </link>
                 <link name="${prefix}right_front_wheel">
                         <visual>
-                                <origin xyz="0 0 0" rpy="3.1415 0 0" />
+                                <origin rpy="3.1415 0 0" />
                                 <geometry>
                                         <mesh filename="package://vetex_support/meshes/visual/right_front_wheel.stl" />
                                 </geometry>
-                                <material name="">
-                                        <color rgba="0.75294 0.75294 0.75294 1" />
-                                </material>
+                                <material name="euler_gray"/>
                         </visual>
                         <collision>
-                                <origin xyz="0 0 0" rpy="3.1415 0 0" />    
+                                <origin rpy="3.1415 0 0" />    
                                 <geometry> 
                                         <mesh filename="package://vetex_support/meshes/collision/right_front_wheel.stl" />
                                 </geometry>
@@ -123,45 +75,33 @@
                 </link>
                 <!-- end of link list -->
                 <!-- joint list -->
-                <joint name="${prefix}map" type="fixed">
-                        <origin xyz="0 0 0" rpy="0 0 0" />
-                        <parent link="${prefix}base_link" />
-                        <child link="${prefix}map" />
-                        <axis xyz="0 0 0" />
-                </joint>
-                <joint name="${prefix}odom" type="fixed">
-                        <origin xyz="0 0 0" rpy="0 0 0" />
-                        <parent link="${prefix}map" />
-                        <child link="${prefix}odom" />
-                        <axis xyz="0 0 0" />
-                </joint>
-                <joint name="${prefix}left_front_wheel" type="revolute">
+                <joint name="${prefix}left_front_wheel" type="continuous">
                         <origin xyz="0 0.58668 0.21577" rpy="0 1 0" />
-                        <parent link="${prefix}odom" />
+                        <parent link="${prefix}base_link" />
                         <child link="${prefix}left_front_wheel" />
                         <axis xyz="0 1 0" />
-                        <limit lower="-10" upper="10" effort="0" velocity="3" />
+                        <limit effort="0" velocity="3" />
                 </joint>
-                <joint name="${prefix}left_rear_wheel" type="revolute">
+                <joint name="${prefix}left_rear_wheel" type="continuous">
                         <origin xyz="-2.0878 0.58642 0.21577" rpy="0 1 0" />
-                        <parent link="${prefix}odom" />
+                        <parent link="${prefix}base_link" />
                         <child link="${prefix}left_rear_wheel" />
                         <axis xyz="0 1 0" />
-                        <limit lower="-10" upper="10" effort="0" velocity="3" />
+                        <limit effort="0" velocity="3" />
                 </joint>
-                <joint name="${prefix}right_rear_wheel" type="revolute">
+                <joint name="${prefix}right_rear_wheel" type="continuous">
                         <origin xyz="-2.0878 -0.58668 0.21577" rpy="0 1 0" />
-                        <parent link="${prefix}odom" />
+                        <parent link="${prefix}base_link" />
                         <child link="${prefix}right_rear_wheel" />
                         <axis xyz="0 1 0" />
-                        <limit lower="-10" upper="10" effort="0" velocity="3" />
+                        <limit effort="0" velocity="3" />
                 </joint>                
-                <joint name="${prefix}right_front_wheel" type="revolute">
+                <joint name="${prefix}right_front_wheel" type="continuous">
                         <origin xyz="0 -0.58642 0.21577" rpy="0 0 0" />
-                        <parent link="${prefix}odom" />
+                        <parent link="${prefix}base_link" />
                         <child link="${prefix}right_front_wheel" />
                         <axis xyz="0 1 0" />
-                        <limit lower="-10" upper="10" effort="0" velocity="3" />
+                        <limit effort="0" velocity="3" />
                 </joint>
                	<!-- end of joint list -->
         </xacro:macro>
