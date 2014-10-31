@@ -21,3 +21,9 @@ In addition, it also assumes that the following transforms are published.
 The navigation configuration provides numerous topics for visualizing the robot's progress toward the goal, too many to list here. 
 
 In terms of input, you can specify goals by publishing on the topic `/move_base_simple/goal`, which is what RViz does. However, the higher-level smach-compatibile Action interface is also available, as a [MoveBaseAction](http://docs.ros.org/api/move_base_msgs/html/action/MoveBase.html) with the namespace `/move_base`. 
+
+Navigation Stage Demo
+---------------------
+
+To run the navigation demo with simulated input/driving (via (Stage)[http://wiki.ros.org/stage_ros]), run the following command. 
+ - `roslaunch euler_navigation_demo stage.launch`
