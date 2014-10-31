@@ -77,7 +77,7 @@
                 <!-- end of link list -->
                 <!-- joint list -->
                 <joint name="${prefix}to_footprint" type="fixed">
-                    <origin xyz="-1 0 0"/>
+                    <origin xyz="-1.0439 0 0"/>
                     <parent link="${prefix}base_link" />
                     <child link="${prefix}base_footprint" />
                 </joint>
