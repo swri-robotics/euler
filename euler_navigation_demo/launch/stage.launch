@@ -14,11 +14,18 @@
     <node name="static_tf_odom" pkg="tf" type="static_transform_publisher"
         args="0 0 0 0 0 0 /robot_0/odom /odom 100"/>
     <node name="static_tf_baselink" pkg="tf" type="static_transform_publisher"
-        args="0 0 0 0 0 0 /robot_0/base_link /base_link 100"/>
+        args="1.0439 0 0 0 0 0 /robot_0/base_link /base_link 100"/>
     <node name="fake_localization" pkg="fake_localization" type="fake_localization" output="screen">
         <remap from="/base_pose_ground_truth" to="/euler/base_pose_ground_truth"/>
         <param name="odom_frame_id" value="/robot_0/odom"/>
+        <param name="base_frame_id" value="/base_footprint"/>
     </node>
     <include file="$(find euler_navigation)/launch/move_base.launch"/>
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find euler_navigation)/euler_nav.rviz"/>
+    
+    
+    <param name="robot_description" command="$(find xacro)/xacro.py $(find vetex_support)/urdf/vetex.xacro" />
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
 </launch>
