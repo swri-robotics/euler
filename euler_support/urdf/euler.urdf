@@ -311,6 +311,41 @@
     <axis xyz="-1 0 0"/>
     <limit effort="100" lower="-6.283" upper="6.283" velocity="12.566"/>
   </joint>
+  <property name="M_PI" value="3.14159"/>
+  <link name="_bodycenter">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0 "/>
+      <geometry>
+        <mesh filename="package://euler_support/meshes/visual/asus_sensor.stl"/>
+      </geometry>
+      <material name="lt_black">
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.0730 0.2760 0.0720"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="_base-bodycenter-prism-x" type="fixed">
+    <origin rpy="1.5708 1.8849 0" xyz="0.461 0 2.103"/>
+    <parent link="base_link"/>
+    <child link="_bodycenter"/>
+  </joint>
+  <joint name="_depth_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.049 0 0"/>
+    <parent link="_bodycenter"/>
+    <child link="_depth_frame"/>
+  </joint>
+  <link name="_depth_frame"/>
+  <joint name="_rgb_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.022 0 0"/>
+    <parent link="_bodycenter"/>
+    <child link="_rgb_frame"/>
+  </joint>
+  <link name="_rgb_frame"/>
   <link name="base_link"> </link>
   <link name="frame_left">
     <visual>
@@ -363,6 +398,57 @@
       </geometry>
     </collision>
   </link>
+  <link name="sick_nav350">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.239 -0.648 2.551"/>
+      <geometry>
+        <mesh filename="package://euler_support/meshes/visual/sick_nav350.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0 0 0.752941176470588 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.239 -0.648 2.551"/>
+      <geometry>
+        <mesh filename="package://euler_support/meshes/collision/sick_nav350.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="front_sick_s300">
+    <visual>
+      <origin rpy="0 0 -0.75047" xyz="0.193 -0.617 0.532"/>
+      <geometry>
+        <mesh filename="package://euler_support/meshes/visual/sick_s300_mounting_assy.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.75 0.75 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 -0.75047" xyz="0.193 0.617 0.532"/>
+      <geometry>
+        <mesh filename="package://euler_support/meshes/collision/sick_s300_mounting_assy.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="rear_sick_s300">
+    <visual>
+      <origin rpy="0 0  -3.96178" xyz="-2.280 0.617 0.532"/>
+      <geometry>
+        <mesh filename="package://euler_support/meshes/visual/sick_s300_mounting_assy.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.75 0.75 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 -3.96178" xyz="-2.280 -0.617 0.532"/>
+      <geometry>
+        <mesh filename="package://euler_support/meshes/collision/sick_s300_mounting_assy.stl"/>
+      </geometry>
+    </collision>
+  </link>
   <joint name="frame_left" type="fixed">
     <parent link="base_link"/>
     <child link="frame_left"/>
@@ -391,6 +477,24 @@
     <parent link="base_link"/>
     <child link="motoman_base_link"/>
     <origin rpy="3.1415 0 0" xyz="0.067518 0 2.016"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <joint name="sick_nav350" type="fixed">
+    <parent link="base_link"/>
+    <child link="sick_nav350"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <joint name="front_sick_s300" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_sick_s300"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <joint name="rear_sick_s300" type="fixed">
+    <parent link="base_link"/>
+    <child link="rear_sick_s300"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis xyz="0 0 0"/>
   </joint>
 </robot>

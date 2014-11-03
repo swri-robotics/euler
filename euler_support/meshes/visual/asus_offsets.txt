@@ -1,0 +1,5 @@
+Offset for ASUS sensor
+Delta X: 0.461m
+Delta Y: 2.103m 
+Delta Z: 0.000m
+Angle from ground plane: 18 deg
