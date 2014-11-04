@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+
+<xacro:macro name="asus_xtion_pro" params="sensor_name off_x off_y off_z off_rr off_rp off_ry">
+  <property name="M_PI" value="3.14159"/>
+
+  <link name="${sensor_name}_bodycenter">
+    <visual>
+      <origin xyz="0 0 0 " rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://euler_support/meshes/visual/asus_sensor.stl"/>
+      </geometry>
+      <material name="lt_black">
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0730 0.2760 0.0720"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${sensor_name}_base-bodycenter-prism-x" type="fixed">
+    <origin xyz="${off_x} ${off_y} ${off_z}" rpy="${off_rr} ${off_rp} ${off_ry}" />
+    <parent link="base_link" />
+    <child link="${sensor_name}_bodycenter" />
+  </joint>
+
+
+  <joint name="${sensor_name}_depth_joint" type="fixed">
+    <origin xyz="0.049 0 0" rpy="0 0 0" />
+    <parent link="${sensor_name}_bodycenter" />
+    <child link="${sensor_name}_depth_frame" />
+  </joint>
+
+  <link name="${sensor_name}_depth_frame" />
+
+  <joint name="${sensor_name}_rgb_joint" type="fixed">
+    <origin xyz="0.022 0 0" rpy="0 0 0" />
+    <parent link="${sensor_name}_bodycenter" />
+    <child link="${sensor_name}_rgb_frame" />
+  </joint>
+
+  <link name="${sensor_name}_rgb_frame" />
+
+
+</xacro:macro>
+
+</robot>

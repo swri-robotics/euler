@@ -1,0 +1,13 @@
+Front
+Delta X: 0.193m 
+Delta Y: 0.532m 
+Delta Z: 0.617m 
+Angle from x-axis: 47 deg
+
+Rear
+Delta X: 2.280m 
+Delta Y: 0.532m 
+Delta Z: 0.617m
+Angle from x-axis: 43 deg
+
+

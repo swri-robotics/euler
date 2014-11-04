@@ -1,0 +1,169 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:include filename="$(find vetex_support)/urdf/vetex_macro.xacro" />
+<xacro:include filename="$(find motoman_mh5lf_support)/urdf/mh5lf_macro.xacro" />
+<xacro:include filename="$(find euler_support)/urdf/asus_xtion_pro.xacro" />
+
+        <xacro:macro name="euler" params="prefix">
+        <xacro:vetex prefix="vetex_" />
+        <xacro:motoman_mh5lf prefix="motoman_" />
+        <xacro:asus_xtion_pro sensor_name="" off_x="0.461" off_y="0" off_z="2.103" off_rr="1.5708" off_rp="1.8849" off_ry="0"/>                
+        
+        <!--link list -->
+        <link name="${prefix}base_link"> </link>
+        <link name="${prefix}frame_left">
+                <visual>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/visual/frame_left.stl" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />        
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/collision/frame_left.stl" />
+                        </geometry>
+                </collision>
+        </link>
+        <link name="${prefix}frame_right">
+                <visual>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/visual/frame_right.stl" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />        
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/collision/frame_right.stl" />
+                        </geometry>
+                </collision>
+        </link>
+        <link name="${prefix}frame_top">
+                <visual>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/visual/frame_top.stl" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />        
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/collision/frame_top.stl" />
+                        </geometry>
+                </collision>
+        </link> 
+        <link name="${prefix}sick_nav350">
+                <visual>
+                        <origin xyz="-0.239 -0.648 2.551" rpy="0 0 0" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/visual/sick_nav350.stl" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0 0 0.752941176470588 1" />        
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="-0.239 -0.648 2.551" rpy="0 0 0" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/collision/sick_nav350.stl" />
+                        </geometry>
+                </collision>
+        </link>
+        <link name="${prefix}front_sick_s300">
+                <visual>
+                        <origin xyz="0.193 -0.617 0.532" rpy="0 0 -0.75047" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/visual/sick_s300_mounting_assy.stl" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.75 0.75 0 1" />        
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="0.193 0.617 0.532" rpy="0 0 -0.75047" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/collision/sick_s300_mounting_assy.stl" />
+                        </geometry>
+                </collision>
+        </link>
+        <link name="${prefix}rear_sick_s300">
+                <visual>
+                        <origin xyz="-2.280 0.617 0.532" rpy="0 0  -3.96178" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/visual/sick_s300_mounting_assy.stl" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.75 0.75 0 1" />        
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="-2.280 -0.617 0.532" rpy="0 0 -3.96178" />
+                        <geometry>
+                                <mesh filename="package://euler_support/meshes/collision/sick_s300_mounting_assy.stl" />
+                        </geometry>
+                </collision>
+        </link> 
+        <joint name="${prefix}frame_left" type="fixed" >
+                <parent link="${prefix}base_link" />
+                <child link="${prefix}frame_left" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>
+
+        <joint name="${prefix}frame_right" type="fixed">
+                <parent link="${prefix}base_link" />
+                <child link="${prefix}frame_right" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>
+        <joint name="${prefix}frame_top" type="fixed">
+                <parent link="${prefix}base_link" />
+                <child link="${prefix}frame_top" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>     
+         
+        <joint name="${prefix}to_vetex" type="fixed">
+                <parent link="${prefix}base_link" />
+                <child link="${prefix}vetex_base_link" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>       
+        <joint name="${prefix}to_arm" type="fixed">
+                <parent link="${prefix}base_link" />
+                <child link="${prefix}motoman_base_link" />
+                <origin xyz="0.067518 0 2.016" rpy="3.1415 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>
+
+        <joint name="${prefix}sick_nav350" type="fixed">
+                <parent link="${prefix}base_link" />
+                <child link="${prefix}sick_nav350" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>       
+        <joint name="${prefix}front_sick_s300" type="fixed">
+                <parent link="${prefix}base_link" />
+                <child link="${prefix}front_sick_s300" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>
+                <joint name="${prefix}rear_sick_s300" type="fixed">
+                <parent link="${prefix}base_link" />
+                <child link="${prefix}rear_sick_s300" />
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>
+</xacro:macro>
+</robot>
