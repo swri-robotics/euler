@@ -6,13 +6,13 @@ obstacle_layer:
     laser1: 
         topic: /euler/scan1
         data_type: LaserScan
-        sensor_frame: /robot_0/base_laser_link
+        sensor_frame: /front_sick_s300
         clearing: true
         marking: true
     laser2:
         topic: /euler/scan2
         data_type: LaserScan
-        sensor_frame: /robot_1/base_laser_link
+        sensor_frame: /rear_sick_s300
         clearing: true
         marking: true
     obstacle_range: 10
