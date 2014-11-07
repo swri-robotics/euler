@@ -20,12 +20,12 @@ define topurg ranger
 define laser_assembly position
 (
   size [0.01 0.01 0.01]
-  topurg(pose [ -1.2192 -.6096 .26 225.000 ])
+  topurg(pose [ -1.2361 .617 0.522 -227.000 ])
 )
 
 define euler position
 (
-  size [2.4384 1.2192 0.25]
+  size [2.4384 1.2192 0.532]
 
   # [ xmin xmax ymin ymax zmin zmax amin amax ]
   velocity_bounds     [-1 1 -0.8 0.8 0 0 -28 28 ]
@@ -34,8 +34,9 @@ define euler position
   origin [0 0 0 0]
   gui_nose 1
   drive "omni"
-  topurg(pose [ 1.2192 .6096 .26 45.000 ])
-  laser_assembly(pose [0 0 .26 0])
+  
+  topurg(pose [ 1.2369 -.617 0 -43.000 ])
+  laser_assembly(pose [0 0 0 0])
 )
 
 
