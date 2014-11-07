@@ -24,7 +24,7 @@
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find euler_navigation)/euler_nav.rviz"/>
     
     
-    <param name="robot_description" command="$(find xacro)/xacro.py $(find vetex_support)/urdf/vetex.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro.py $(find euler_support)/urdf/euler.xacro" />
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
 
