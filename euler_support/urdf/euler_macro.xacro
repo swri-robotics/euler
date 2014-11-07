@@ -82,7 +82,6 @@
         </link>
         <link name="${prefix}front_sick_s300">
                 <visual>
-                        <origin xyz="0.193 -0.617 0.532" rpy="0 0 -0.75047" />
                         <geometry>
                                 <mesh filename="package://euler_support/meshes/visual/sick_s300_mounting_assy.stl" />
                         </geometry>
@@ -91,7 +90,6 @@
                         </material>
                 </visual>
                 <collision>
-                        <origin xyz="0.193 0.617 0.532" rpy="0 0 -0.75047" />
                         <geometry>
                                 <mesh filename="package://euler_support/meshes/collision/sick_s300_mounting_assy.stl" />
                         </geometry>
@@ -99,7 +97,6 @@
         </link>
         <link name="${prefix}rear_sick_s300">
                 <visual>
-                        <origin xyz="-2.280 0.617 0.532" rpy="0 0  -3.96178" />
                         <geometry>
                                 <mesh filename="package://euler_support/meshes/visual/sick_s300_mounting_assy.stl" />
                         </geometry>
@@ -108,7 +105,6 @@
                         </material>
                 </visual>
                 <collision>
-                        <origin xyz="-2.280 -0.617 0.532" rpy="0 0 -3.96178" />
                         <geometry>
                                 <mesh filename="package://euler_support/meshes/collision/sick_s300_mounting_assy.stl" />
                         </geometry>
@@ -156,13 +152,13 @@
         <joint name="${prefix}front_sick_s300" type="fixed">
                 <parent link="${prefix}base_link" />
                 <child link="${prefix}front_sick_s300" />
-                <origin xyz="0 0 0" rpy="0 0 0" />
+                <origin xyz="0.193 -0.617 0.532" rpy="0 0 -0.75047" />
                 <axis xyz="0 0 0" />
         </joint>
                 <joint name="${prefix}rear_sick_s300" type="fixed">
                 <parent link="${prefix}base_link" />
                 <child link="${prefix}rear_sick_s300" />
-                <origin xyz="0 0 0" rpy="0 0 0" />
+                <origin xyz="-2.280 0.617 0.532" rpy="0 0  -3.96178" />
                 <axis xyz="0 0 0" />
         </joint>
 </xacro:macro>
