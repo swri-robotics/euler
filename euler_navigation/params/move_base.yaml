@@ -9,7 +9,7 @@ global_costmap:
     - {name: static_layer, type: 'costmap_2d::StaticLayer'}
     - {name: obstacle_layer, type: 'costmap_2d::ObstacleLayer'}
     - {name: inflation_layer, type: 'costmap_2d::InflationLayer'}
-    robot_base_frame: /base_footprint
+    robot_base_frame: /vetex_base_footprint
 local_costmap:
     plugins:
     - {name: obstacle_layer, type: 'costmap_2d::ObstacleLayer'}
@@ -17,6 +17,6 @@ local_costmap:
     origin_x: -5
     origin_y: -5
     global_frame: /odom
-    robot_base_frame: /base_footprint
+    robot_base_frame: /vetex_base_footprint
     rolling_window: true
 

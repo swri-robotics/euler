@@ -17,7 +17,7 @@
                                 </geometry>
                         </collision>
                 </link>
-                <link name="base_footprint"/>
+                <link name="${prefix}base_footprint"/>
                 <link name="${prefix}left_front_wheel">
                         <visual>
                                 <geometry>
@@ -79,7 +79,7 @@
                 <joint name="${prefix}to_footprint" type="fixed">
                     <origin xyz="-1.0439 0 0"/>
                     <parent link="${prefix}base_link" />
-                    <child link="base_footprint" />
+                    <child link="${prefix}base_footprint" />
                 </joint>
                 <joint name="${prefix}left_front_wheel" type="continuous">
                         <origin xyz="0 0.58668 0.21577" rpy="0 1 0" />
