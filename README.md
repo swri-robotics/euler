@@ -3,6 +3,7 @@ euler
 
 SwRI mobile manipulation platform
 
+![Omni-Directional Euler Robot with Industrial Manipulator](EulerRobot.PNG)
 
 
 Navigation Interface
