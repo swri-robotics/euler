@@ -26,5 +26,5 @@ In terms of input, you can specify goals by publishing on the topic `/move_base_
 Navigation Stage Demo
 ---------------------
 
-To run the navigation demo with simulated input/driving (via (Stage)[http://wiki.ros.org/stage_ros]), run the following command. 
+To run the navigation demo with simulated input/driving (via [Stage](http://wiki.ros.org/stage_ros)), run the following command. 
  - `roslaunch euler_navigation_demo stage.launch`
