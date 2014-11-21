@@ -1,0 +1,9 @@
+- git: {local-name: euler, uri: 'https://github.com/swri-robotics/euler.git', version: indigo-devel}
+- git: {local-name: industrial_core, uri: 'https://github.com/ros-industrial/industrial_core.git',
+    version: indigo-devel}
+- git: {local-name: motoman, uri: 'https://github.com/ros-industrial/motoman.git',
+    version: indigo-devel}
+- git: {local-name: sicktoolbox, uri: 'https://github.com/swri-robotics/sicktoolbox.git',
+    version: catkin}
+- git: {local-name: sicktoolbox_wrapper, uri: 'https://github.com/swri-robotics/sicktoolbox_wrapper.git',
+    version: indigo-devel}
