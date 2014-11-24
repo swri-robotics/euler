@@ -1,0 +1,21 @@
+
+<!--
+  Robot specific version of 'robot_interface_streaming.launch'.
+
+  Usage:
+    robot_interface_streaming.launch robot_ip:=<value> nav350_ip:=<value>
+-->
+<launch>
+  <arg name="robot_ip" />
+  <arg name="nav350_ip" />
+
+  <!-- Manipulator -->
+  <include file="$(find euler_support)/launch/manipulator_interface.launch">
+    <arg name="robot_ip"   value="$(arg robot_ip)" />
+  </include>
+
+  <!-- Base -->
+  <include file="$(find euler_support)/launch/base_interface.launch">
+    <arg name="nav350_ip"   value="$(arg nav350_ip)" />
+  </include>
+</launch>

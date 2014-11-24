@@ -1,0 +1,23 @@
+<!--
+  Euler base interface(drivers) launch
+
+  Defaults provided for euler:
+   - Motoman controller = fs100
+   - Motoman driver version > 0
+
+  Usage:
+    base_interface.launch nav350_ip:=<value>
+-->
+<launch>
+  <arg name="nav350_ip" />
+
+  <!-- Vetex Base -->
+    <!-- TODO: Add base driver node : vetex_supprt:robot_interface.launch -->
+
+  <!-- Sick Nav350 -->
+    <!-- TODO: sicktoolbox_wrapper:sicknav350.launch -->
+
+  <!-- Base laser scan sensors -->
+
+
+</launch>

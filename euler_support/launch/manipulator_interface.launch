@@ -1,0 +1,20 @@
+<!--
+  Euler manipulator interface(driver) launch files
+
+  Defaults provided for euler:
+   - Motoman controller = fs100
+   - Motoman driver version > 0
+
+  Usage:
+    manipulator_interface.launch robot_ip:=<value>
+-->
+<launch>
+  <arg name="robot_ip" />
+
+  <!-- Manipulator -->
+  <include file="$(find motoman_mh5lf_support)/launch/robot_interface_streaming_mh5lf.launch">
+    <arg name="controller" value="fs100/>
+    <arg name="version0"   value="false" />
+    <arg name="robot_ip"   value="$(arg robot_ip)" />
+  </include>
+</launch>

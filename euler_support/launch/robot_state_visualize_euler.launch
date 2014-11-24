@@ -1,0 +1,31 @@
+
+<!--
+  Euler robot state visualizer.
+
+  Defaults provided for mh5lf:
+   - 7 joints
+
+  Usage:
+    robot_state_visualize_euler.launch robot_ip:=<value> nav350_ip:=<value>
+-->
+<launch>
+	<arg name="robot_ip" />
+  <arg name="nav350_ip" />
+
+  <!-- controller: Controller name (fs100 or dx100) -->
+  <arg name="controller" />
+
+	<rosparam command="load" file="$(find motoman_mh5lf_support)/config/joint_names_mh5lf.yaml" />
+
+  <include file="$(find euler_support/launch/robot_interface_streaming.launch">
+		<arg name="robot_ip"   value="$(arg robot_ip)" />
+    <arg name="nav350_ip"   value="$(arg nav350_ip)" />
+	</include>
+
+	<node name="robot_state_publisher" pkg="robot_state_publisher" 
+		type="robot_state_publisher" />
+
+  <include file="$(find euler_support)/launch/load_euler.launch" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find euler_support)/config/robot_state_visualize.rviz" required="true" />
+</launch>
