@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="ip" default="192.168.1.10"/><!--Sick sensor ip address -->
+  <arg name="port" default="2111"/>
+
+  <node name="static_tf_map_to_odom" pkg="tf" type="static_transform_publisher"
+        args="0 0 0 0 0 0 /map /odom 100" />
+
+  <node name="sicknav350" pkg="sicktoolbox_wrapper" type="sicknav350" output="screen">
+    <param name="ipaddress" value="$(arg ip)"/>
+    <param name="port" value="$(arg port)"/>
+    <rosparam>
+      mode: 4 <!--Operating Mode: 0=powerdown, 1=standby, 2=mapping, 3-=ladnmark, 4=navigation -->
+      perform_mapping: false <!-- Perform mapping before going into mode -->
+      wait_command: 1
+      mask_command: 2 <!--Mask: Landmarkmode 0=reflectors, 1=reflectors+scan; Nav mode 0=pose+reflectors, 1=pose+scan, 2=pose+reflectors+scan -->
+      frame_id: "odom"
+      sick_frame_id: "sick_nav350"
+      reflector_frame_id: "sick_nav350"
+      reflector_child_frame_id: "reflector"
+      inverted: true
+      resolution: 1.0
+      start_angle: 0.0
+      stop_angle: 360.0      
+    </rosparam>
+  </node>
+
+  <node name="static_map" pkg="map_server" type="map_server" args="$(find euler_navigation_demo)/map.yaml" />
+</launch>
+
