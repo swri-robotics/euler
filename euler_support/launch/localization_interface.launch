@@ -16,6 +16,7 @@
       mask_command: 2 <!--Mask: Landmarkmode 0=reflectors, 1=reflectors+scan; Nav mode 0=pose+reflectors, 1=pose+scan, 2=pose+reflectors+scan -->
       frame_id: "odom"
       sick_frame_id: "sick_nav350"
+      target_frame_id: "base_link" <!-- transform "/frame_id -> /target_frame_id" will be published -->
       reflector_frame_id: "sick_nav350"
       reflector_child_frame_id: "reflector"
       inverted: true
