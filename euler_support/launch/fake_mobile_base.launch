@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+    <param name="/use_sim_time" value="true"/>
+
+    <!-- fake mobile base and odometry-->
+    <node name="stage_ros" pkg="stage_ros" type="stageros" 
+        args="$(find euler_navigation_demo)/euler.world">
+        <remap from="/robot_0/cmd_vel" to="/euler/cmd_vel"/>
+        <remap from="/robot_0/base_scan" to="/euler/scan1"/>
+        <remap from="/robot_1/base_scan" to="/euler/scan2"/>
+        <remap from="/robot_0/odom" to="/euler/odom"/>
+        <remap from="/robot_0/base_pose_ground_truth" to="/euler/base_pose_ground_truth"/>
+    </node>
+
+    <node name="static_tf_stage" pkg="tf" type="static_transform_publisher"
+        args="0 0 0 0 0 0 /robot_0/odom /robot_1/odom 100"/>
+    <node name="static_tf_odom" pkg="tf" type="static_transform_publisher"
+        args="0 0 0 0 0 0 /robot_0/odom /odom 100"/>
+    <node name="static_tf_baselink" pkg="tf" type="static_transform_publisher"
+        args="1.0439 0 0 0 0 0 /robot_0/base_link /base_link 100"/>
+</launch>
