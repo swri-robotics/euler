@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+  <name>vetex_support</name>
+  <version>0.0.0</version>
+  <description>The vetex_support package</description>
+  <maintainer email="paul.hvass@swri.org">Paul Hvass</maintainer>
+  <author>Paul Hvass</author>
+  <license>BSD</license>
+  <buildtool_depend>catkin</buildtool_depend>
+</package>
