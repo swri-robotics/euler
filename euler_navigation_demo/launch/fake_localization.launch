@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<launch>
+    <node name="fake_localization" pkg="fake_localization" type="fake_localization" output="log">
+        <remap from="/base_pose_ground_truth" to="/euler/base_pose_ground_truth"/>
+        <param name="odom_frame_id" value="/robot_0/odom"/>
+        <param name="base_frame_id" value="/vetex_base_footprint"/>
+    </node>
+
+    <node name="static_map" pkg="map_server" type="map_server" args="$(find euler_navigation_demo)/map.yaml" />
+
+</launch>
