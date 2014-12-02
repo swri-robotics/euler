@@ -67,7 +67,6 @@
         </link> 
         <link name="${prefix}sick_nav350">
                 <visual>
-                        <origin xyz="-0.239 -0.648 2.551" rpy="0 0 0" />
                         <geometry>
                                 <mesh filename="package://euler_support/meshes/visual/sick_nav350.stl" />
                         </geometry>
@@ -76,7 +75,6 @@
                         </material>
                 </visual>
                 <collision>
-                        <origin xyz="-0.239 -0.648 2.551" rpy="0 0 0" />
                         <geometry>
                                 <mesh filename="package://euler_support/meshes/collision/sick_nav350.stl" />
                         </geometry>
@@ -148,7 +146,7 @@
         <joint name="${prefix}sick_nav350" type="fixed">
                 <parent link="${prefix}base_link" />
                 <child link="${prefix}sick_nav350" />
-                <origin xyz="0 0 0" rpy="0 0 0" />
+                <origin xyz="-0.239 -0.648 2.551" rpy="0 0 0" />
                 <axis xyz="0 0 0" />
         </joint>       
         <joint name="${prefix}front_sick_s300" type="fixed">
