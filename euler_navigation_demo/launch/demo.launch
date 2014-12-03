@@ -1,8 +1,15 @@
+<?xml version="1.0"?>
 <launch>
-    <node name="static_tf0" pkg="tf" type="static_transform_publisher"
-        args="0 0 0 0 0 0 /map /base_link 100" />
-    <node name="static_map" pkg="map_server" type="map_server" args="$(find euler_navigation_demo)/map.yaml" />
-    <include file="$(find euler_navigation)/launch/move_base.launch"/>
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find euler_navigation)/euler_nav.rviz"/>
+  <include file="$(find euler_navigation_demo)/launch/stage.launch"/>
+  <include file="$(find euler_navigation_demo)/launch/fake_localization.launch"/>
+
+  <!-- mobile base planning -->
+  <include file="$(find euler_navigation)/launch/move_base.launch"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro.py $(find euler_support)/urdf/euler.xacro" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+  <node required="true" name="rviz" pkg="rviz" type="rviz" args="-d $(find euler_navigation)/euler_nav.rviz"/>
 </launch>
 
