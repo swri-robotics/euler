@@ -7,7 +7,7 @@
         args="0 0 0 0 0 0 /map /odom 100" />
 
   <remap from="/odom" to="/euler/odom"/>
-  <node name="sicknav350" pkg="sicktoolbox_wrapper" type="sicknav350" output="screen">
+  <node name="sicknav350" pkg="sicktoolbox_wrapper" type="sicknav350" required="true" output="screen">
     <param name="ipaddress" value="$(arg ip)"/>
     <param name="port" value="$(arg port)"/>
     <rosparam>
@@ -19,7 +19,7 @@
       sick_frame_id: "sick_nav350"
       target_frame_id: "base_link" <!-- transform "/frame_id -> /target_frame_id" will be published -->
       publish_odom: true
-      manipulation_base_frame_id: "vetex_base_footprint" 
+      mobile_base_frame_id: "vetex_base_footprint" 
       reflector_frame_id: "sick_nav350"
       reflector_child_frame_id: "reflector"
       inverted: true
