@@ -16,7 +16,7 @@
       wait_command: 1
       mask_command: 2 <!--Mask: Landmarkmode 0=reflectors, 1=reflectors+scan; Nav mode 0=pose+reflectors, 1=pose+scan, 2=pose+reflectors+scan -->
       frame_id: "odom"
-      sick_frame_id: "sick_nav350"
+      sick_frame_id: "localization_frame"
       target_frame_id: "base_link" <!-- transform "/frame_id -> /target_frame_id" will be published -->
       publish_odom: true
       mobile_base_frame_id: "vetex_base_footprint" 
