@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<launch>
+<!--  
+	The vetexvels geometry_msgs/Twist message takes the speed commands for the base
+	The values in the 'vetexvels' message will be scaled by the vetex_*_scale parameters
+	The combination of speed and parameter factors should be at least 20 in order to 
+	start moving the base
+-->
+	<node name="vetex_driver" pkg="vetexdriver" type="vetexdriver" output="screen">
+		<param name="vetex_x_scale" value="1.0"/>
+		<param name="vetex_y_scale" value="1.0"/>
+		<param name="vetex_z_scale" value="1.0"/>
+	</node>
+</launch>
