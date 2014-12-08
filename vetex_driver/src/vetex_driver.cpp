@@ -5,13 +5,6 @@
 #include "std_msgs/Bool.h"
 #include "vetexcanopen.h"
 
-/*
-static bool enabled_ = false;
-static double _xscale = 1;
-static double _yscale = 1;
-static double _zscale = 1;
-*/
-
 static const double SCALE_MAX_X = 100.0f;
 static const double SCALE_MIN_X = 20.0f;
 static const double SCALE_MAX_Y = 100.0f;
@@ -25,9 +18,6 @@ class VetexDriver
 public:
   VetexDriver():
     enabled_(false),
-    _xscale(1),
-    _yscale(1),
-    _zscale(1),
     throtle_scale_factor_(THROTLE_SCALE_FACTOR)    
   {
     
@@ -62,13 +52,8 @@ public:
     ros::Duration loop_duration(0.1f);
 	  while (ros::ok())
     {
-		  ph.param("vetex_x_scale", _xscale, 1.0);
-		  ph.param("vetex_y_scale", _yscale, 1.0);
-		  ph.param("vetex_z_scale", _zscale, 1.0);
 		  ros::spinOnce();
-
       loop_duration.sleep();
-
 	  }
     
 	  vetex_terminate();
@@ -80,8 +65,7 @@ protected:
 
   bool init()
   {
-	  // Initialize the vetex can stuff.
-	  vetex_initialize();
+	  // Initialize the vetex can stuff.	  
     ros::NodeHandle n("~");
 
 	  n.param("max_speed_x", max_speed_x_, 0.1); // m/sec
@@ -91,16 +75,22 @@ protected:
 	  n.param("max_speed_r", max_speed_r_, 0.5); // m/sec
 	  n.param("min_speed_r", min_speed_r_, 0.05);// m/sec
 
-    return true;
+    ROS_INFO_STREAM("Driver Parameters :\n"<<
+      "\n\tmax_speed_x: "<<max_speed_x_<<
+      "\n\tmax_speed_y: "<<max_speed_y_<<
+      "\n\tmax_speed_r: "<<max_speed_r_<<
+      "\n\tmin_speed_x: "<<min_speed_x_<<
+      "\n\tmin_speed_y: "<<min_speed_y_<<
+      "\n\tmin_speed_r: "<<min_speed_r_<<"\n");
 
+    vetex_initialize();
+
+    return true;
   }
 
   void twistCallback(const geometry_msgs::Twist::ConstPtr& msg)
   {
-	  ROS_INFO("Received %f, %f, %f",
-		         	msg->linear.x,
-			  msg->linear.y,
-			  msg->angular.z);
+	  ROS_INFO("Received %f, %f, %f",msg->linear.x, msg->linear.y,msg->angular.z);
 
 	  if ( ! enabled_) {
 		  vetex_enable_movement();
@@ -119,15 +109,7 @@ protected:
     double rf = -computeScaleFactor(SCALE_MAX_R,SCALE_MIN_R, max_speed_r_,min_speed_r_, msg->angular.z); // rotation is flipped
 
     ROS_INFO_STREAM("Scale factors x: "<<xf<<" y: "<<yf<<" r: "<<rf);
-
 	  vetex_set_all_percentages(xf, yf, rf);
-
-/*
-	  vetex_set_all_percentages(floor(msg->linear.x * _xscale),
-				    floor(msg->linear.y * _yscale),
-				    floor(msg->angular.z * _zscale));
-
-*/
   }
 
   void enableCallback(const std_msgs::Bool::ConstPtr& msg)
@@ -169,12 +151,7 @@ protected:
   ros::Subscriber twist_sub_;
   ros::Subscriber enable_sub_;
 
-
   bool enabled_;
-  double _xscale;
-  double _yscale;
-  double _zscale;
-
   double max_speed_x_;
   double min_speed_x_;
   double max_speed_y_;
