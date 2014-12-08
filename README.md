@@ -55,3 +55,8 @@ The navigation configuration provides numerous topics for visualizing the robot'
 
 In terms of input, you can specify goals by publishing on the topic `/move_base_simple/goal`, which is what RViz does. However, the higher-level smach-compatibile Action interface is also available, as a [MoveBaseAction](http://docs.ros.org/api/move_base_msgs/html/action/MoveBase.html) with the namespace `/move_base`. 
 
+## Hardware configuration
+
+### Sick S300
+The Sick S300 safety laser scanners have embedded controllers that require one-time configuration, most importantly to setup the protected zones.  The S300 is a serial device, but it ships with a USB to Serial (M8 4 conductor connector) cable that plugs into the front of the sensor.  The SICK [CDN software](https://www.mysick.com/eula.aspx?type=ZIP&path=saqqara/DC0000853&lang=en) is used for communication and configuration.  This [Quick Start Guide](http://www.sick.com/us/en-us/home/service/safetyhelp/Documents/S3000_S300_S300mini_QuickStart.pdf) is helpful.  The [full manual](https://www.mysick.com/saqqara/get.aspx?id=im0017613) gives all the details.  The Euler configuration project file is [here](euler_config/config/sick_s300/SICK%20S300%20Setup.skp).
+
