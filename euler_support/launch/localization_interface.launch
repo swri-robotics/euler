@@ -7,20 +7,20 @@
         args="0 0 0 0 0 0 /map /odom 100" />
 
   <remap from="/odom" to="/euler/odom"/>
-  <node name="sicknav350" pkg="sicktoolbox_wrapper" type="sicknav350" output="screen">
+  <node name="sicknav350" pkg="sicktoolbox_wrapper" type="sicknav350" required="true" output="screen">
     <param name="ipaddress" value="$(arg ip)"/>
     <param name="port" value="$(arg port)"/>
     <rosparam>
       mode: 4 <!--Operating Mode: 0=powerdown, 1=standby, 2=mapping, 3-=ladnmark, 4=navigation -->
-      perform_mapping: true <!-- Perform mapping before going into mode -->
+      perform_mapping: false <!-- Perform mapping before going into mode -->
       wait_command: 1
       mask_command: 2 <!--Mask: Landmarkmode 0=reflectors, 1=reflectors+scan; Nav mode 0=pose+reflectors, 1=pose+scan, 2=pose+reflectors+scan -->
       frame_id: "odom"
-      sick_frame_id: "sick_nav350"
+      sick_frame_id: "localization_frame"
       target_frame_id: "base_link" <!-- transform "/frame_id -> /target_frame_id" will be published -->
       publish_odom: true
-      manipulation_base_frame_id: "vetex_base_footprint" 
-      reflector_frame_id: "sick_nav350"
+      mobile_base_frame_id: "vetex_base_footprint" 
+      reflector_frame_id: "localization_frame"
       reflector_child_frame_id: "reflector"
       inverted: true
       resolution: 1.0

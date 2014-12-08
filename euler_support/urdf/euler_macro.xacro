@@ -14,6 +14,7 @@
         
         <!--link list -->
         <link name="${prefix}base_link"> </link>
+	<link name="${prefix}localization_frame"/>
         <link name="${prefix}frame_left">
                 <visual>
                         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -148,7 +149,13 @@
                 <child link="${prefix}sick_nav350" />
                 <origin xyz="-0.239 -0.648 2.551" rpy="0 0 0" />
                 <axis xyz="0 0 0" />
-        </joint>       
+        </joint>  
+        <joint name="${prefix}base_to_localization" type="fixed">
+                <parent link="${prefix}base_link" />
+                <child link="${prefix}localization_frame" />
+                <origin xyz="-0.239 -0.648 0" rpy="0 0 0" />
+                <axis xyz="0 0 0" />
+        </joint>     
         <joint name="${prefix}front_sick_s300" type="fixed">
                 <parent link="${prefix}base_link" />
                 <child link="${prefix}front_sick_s300" />
