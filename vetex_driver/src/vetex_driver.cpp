@@ -47,7 +47,7 @@ int main (int argc, char **argv)
 	// Initialize the vetex can stuff.
 	vetex_initialize();
 
-	ros::init(argc, argv, "vetexdriver");
+	ros::init(argc, argv, "vetex_driver");
 	ros::NodeHandle n("~");
 	ros::Subscriber sub1 = n.subscribe("vetexvels", 1000, twistCallback);
 	ros::Subscriber sub2 = n.subscribe("vetexenable", 1000, enableCallback);

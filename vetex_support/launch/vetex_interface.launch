@@ -6,7 +6,7 @@
 	The combination of speed and parameter factors should be at least 20 in order to 
 	start moving the base
 -->
-	<node name="vetex_driver" pkg="vetexdriver" type="vetexdriver" output="screen">
+	<node name="vetex_driver" pkg="vetex_driver" type="vetex_driver" output="screen">
 		<param name="vetex_x_scale" value="1.0"/>
 		<param name="vetex_y_scale" value="1.0"/>
 		<param name="vetex_z_scale" value="1.0"/>

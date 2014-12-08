@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(vetexdriver)
+project(vetex_driver)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -78,7 +78,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES vetexdriver
+#  LIBRARIES vetex_driver
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
@@ -95,24 +95,24 @@ include_directories(
   /usr/local/include/canfestival)
 
 ## Declare a cpp library
-#  add_library(vetexdriversupport
+#  add_library(vetex_driversupport
 #	      src/vetexcanopen.c
 #	      src/vetexcanopenSlaveOD.c
 #	      )
 
 # Declare a cpp executable
-add_executable(vetexdriver
-	       src/vetexdriver.cpp
+add_executable(vetex_driver
+	       src/vetex_driver.cpp
 	       src/vetexcanopen.cpp
 	       src/vetexcanopenSlaveOD.cpp
 	       )
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-# add_dependencies(vetexdriver_node vetexdriver_generate_messages_cpp)
+# add_dependencies(vetex_driver_node vetex_driver_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-#target_link_libraries(vetexdriversupport
+#target_link_libraries(vetex_driversupport
 #  ${catkin_LIBRARIES}
 #  /usr/local/lib/libcanfestival_unix.a
 #  /usr/local/lib/libcanfestival.a
@@ -121,12 +121,12 @@ add_executable(vetexdriver
 #  dl
 #)
 
-#target_link_libraries(vetexdriver
-#  vetexdriversupport
+#target_link_libraries(vetex_driver
+#  vetex_driversupport
 #  ${catkin_LIBRARIES}
 #	)
 
-target_link_libraries(vetexdriver
+target_link_libraries(vetex_driver
 	${catkin_LIBRARIES}
 	/usr/local/lib/libcanfestival_unix.a
 	/usr/local/lib/libcanfestival.a
@@ -150,7 +150,7 @@ target_link_libraries(vetexdriver
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS vetexdriver vetexdriver_node
+# install(TARGETS vetex_driver vetex_driver_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -175,7 +175,7 @@ target_link_libraries(vetexdriver
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_vetexdriver.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_vetex_driver.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
