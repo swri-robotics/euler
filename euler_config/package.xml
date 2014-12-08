@@ -1,0 +1,20 @@
+
+<package>
+ <name>euler_config</name>
+ <version>0.0.0</version>
+ <description>
+  <p>
+      ROS Industrial configuration for the Euler mobile platform.
+    </p>
+ </description>
+ <author>Shaun Edwards</author>
+ <maintainer email="shaun.edwards@gmail.com"/>
+ <license>BSD</license>
+ <url type="website">http://ros.org/wiki/euler_config</url>
+ <url type="bugtracker">https://github.com/swri-robotics/euler/issues</url>
+ <url type="repository">https://github.com/swri-robotics/euler</url>
+ <buildtool_depend>catkin</buildtool_depend>
+ <export>
+  <architecture_independent/>
+ </export>
+</package>
