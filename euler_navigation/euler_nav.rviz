@@ -204,7 +204,7 @@ Visualization Manager:
       Color: 25; 255; 0
       Enabled: true
       Name: Global Plan
-      Topic: /move_base_node/NavfnROS/plan
+      Topic: /move_base_node/GlobalPlanner/plan
       Value: true
     - Alpha: 0.7
       Class: rviz/Map

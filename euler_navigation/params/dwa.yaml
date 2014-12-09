@@ -19,9 +19,15 @@ min_rot_vel: -0.5
 max_rot_vel: 0.5
 acc_lim_theta: 1.0
 
-publish_traj_pc: true
-publish_cost_grid_pc: true
+critics:
+    - Obstacle
+    - PathDist
+    - {name: GoalDist, type: GoalDist, scale: 10.0}
+    - {name: PathOrientation, type: PathOrientation, scale: 0.5}
+publish_traj_pc: True
+publish_cost_grid_pc: True
 
+min_trans_vel: 0.0
 
 #rot_stopped_vel: 0.1
 #acc_limit_trans: 0.1
@@ -30,7 +36,6 @@ publish_cost_grid_pc: true
 #goal_distance_bias: 24.0
 #max_scaling_factor: 0.2,
 #max_trans_vel: 0.55
-#min_trans_vel: 0.1,
 #occdist_scale: 0.01
 #oscillation_reset_angle: 0.2,
 #oscillation_reset_dist: 0.05
