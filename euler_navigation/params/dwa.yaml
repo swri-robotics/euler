@@ -1,16 +1,16 @@
 #forward motion
 # max velocity: 1 m/sec
 # max acceleration: 1 m/sec^2
-min_vel_x: 0.0
-max_vel_x: 1.0
-acc_lim_x: 1.0
+min_vel_x: -0.8
+max_vel_x: 0.8
+acc_lim_x: 0.8
 
 #side motion        
 # max velocity = 0.8 * max forward velocity = 0.8m/sec
 # max acceleration: 0.8 m/sec^2
-min_vel_y: -0.8
-max_vel_y: 0.8
-acc_lim_y: 0.8
+min_vel_y: -1.0
+max_vel_y: 1.0
+acc_lim_y: 1.0
 
 #yaw motion
 # max velocity =  0.5 radians/sec
@@ -18,6 +18,9 @@ acc_lim_y: 0.8
 min_rot_vel: -0.5
 max_rot_vel: 0.5
 acc_lim_theta: 1.0
+
+publish_traj_pc: true
+publish_cost_grid_pc: true
 
 
 #rot_stopped_vel: 0.1
