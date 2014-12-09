@@ -1,8 +1,8 @@
 #forward motion
 # max velocity: 1 m/sec
 # max acceleration: 1 m/sec^2
-min_vel_x: -0.8
-max_vel_x: 0.8
+min_vel_x: -1.0
+max_vel_x: 1.0
 acc_lim_x: 0.8
 
 #side motion        
@@ -15,9 +15,9 @@ acc_lim_y: 1.0
 #yaw motion
 # max velocity =  0.5 radians/sec
 # max acceleration = 1 radians/sec^2
-min_rot_vel: -0.5
-max_rot_vel: 0.5
-acc_lim_theta: 1.0
+min_rot_vel: -0.8
+max_rot_vel: 0.8
+acc_lim_theta: 0.4
 
 critics:
     - Obstacle
@@ -28,6 +28,7 @@ publish_traj_pc: True
 publish_cost_grid_pc: True
 
 min_trans_vel: 0.0
+max_trans_vel: 1.0
 
 xy_goal_tolerance: 0.05
 yaw_goal_tolerance: 0.05
@@ -38,7 +39,6 @@ yaw_goal_tolerance: 0.05
 #forward_point_distance: 0.325
 #goal_distance_bias: 24.0
 #max_scaling_factor: 0.2,
-#max_trans_vel: 0.55
 #occdist_scale: 0.01
 #oscillation_reset_angle: 0.2,
 #oscillation_reset_dist: 0.05
