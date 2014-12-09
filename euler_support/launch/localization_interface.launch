@@ -7,7 +7,7 @@
         args="0 0 0 0 0 0 /map /odom 100" />
 
   <remap from="/odom" to="/euler/odom"/>
-  <node name="sicknav350" pkg="sicktoolbox_wrapper" type="sicknav350" required="true" output="screen">
+  <node name="sicknav350" pkg="sicktoolbox_wrapper" type="sicknav350" required="true" output="log">
     <param name="ipaddress" value="$(arg ip)"/>
     <param name="port" value="$(arg port)"/>
     <rosparam>

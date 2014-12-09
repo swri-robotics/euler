@@ -10,6 +10,7 @@
             file="$(find euler_navigation)/params/dwa.yaml" />
 
         <remap from="cmd_vel" to="/euler/cmd_vel"/>
-        <remap from="odom" to="/euler/odom"/>
+        <remap from="odom" to="/euler/odom_smooth"/>
     </node>
+    <node name="odom_merge" pkg="euler_navigation" type="odom_merge.py" />
 </launch>

@@ -50,12 +50,14 @@ public:
 
 
     ros::Duration loop_duration(0.1f);
+    setEnable(true);
 	  while (ros::ok())
     {
 		  ros::spinOnce();
       loop_duration.sleep();
 	  }
     
+    setEnable(false);
 	  vetex_terminate();
 
     return true;
@@ -74,6 +76,7 @@ protected:
 	  n.param("min_speed_y", min_speed_y_, 0.01);// m/sec
 	  n.param("max_speed_r", max_speed_r_, 0.5); // m/sec
 	  n.param("min_speed_r", min_speed_r_, 0.05);// m/sec
+    n.param("throtle_scale_factor", throtle_scale_factor_, THROTLE_SCALE_FACTOR);// m/sec
 
     ROS_INFO_STREAM("Driver Parameters :\n"<<
       "\n\tmax_speed_x: "<<max_speed_x_<<
@@ -81,22 +84,40 @@ protected:
       "\n\tmax_speed_r: "<<max_speed_r_<<
       "\n\tmin_speed_x: "<<min_speed_x_<<
       "\n\tmin_speed_y: "<<min_speed_y_<<
-      "\n\tmin_speed_r: "<<min_speed_r_<<"\n");
+      "\n\tmin_speed_r: "<<min_speed_r_<<
+      "\n\tthrotle_scale: "<<throtle_scale_factor_<<"\n");
 
     vetex_initialize();
 
     return true;
   }
 
+  void setEnable(bool enable)
+  {
+    if(enable)
+    {
+      vetex_set_all_percentages(0, 0, 0);
+      vetex_enable_movement();
+      ROS_INFO_STREAM("Movement enabled");
+      enabled_ = true;
+    }
+    else
+    {
+      vetex_set_all_percentages(0, 0, 0);
+      vetex_disable_movement();
+      ROS_INFO_STREAM("Movement disabled");   
+      enabled_ = false;   
+    }
+
+  }
+
   void twistCallback(const geometry_msgs::Twist::ConstPtr& msg)
   {
 	  ROS_INFO("Received %f, %f, %f",msg->linear.x, msg->linear.y,msg->angular.z);
 
-	  if ( ! enabled_) {
-		  vetex_enable_movement();
-      vetex_set_all_percentages(0, 0, 0);
-		  enabled_ = true;
-      ROS_INFO_STREAM("Movement enabled");
+	  if ( ! enabled_) 
+    {
+      ROS_WARN_STREAM("Movement is currently disabled");
 	  }
 
 	  // Scale parameters are stored in the ros parameter server.
@@ -115,11 +136,7 @@ protected:
   void enableCallback(const std_msgs::Bool::ConstPtr& msg)
   {
 	  ROS_INFO("Received %d", msg->data);
-	  if (msg->data) {
-		  vetex_enable_movement();
-	  } else {
-		  vetex_disable_movement();
-	  }
+    setEnable(msg->data);
   }
 
   double computeScaleFactor(const double &max_factor,const double &min_factor,
