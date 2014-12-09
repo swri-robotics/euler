@@ -6,9 +6,13 @@
 	The combination of speed and parameter factors should be at least 20 in order to 
 	start moving the base
 -->
+  <remap from="vetexvels" to="euler/cmd_vel"/>
 	<node name="vetex_driver" pkg="vetex_driver" type="vetex_driver" output="screen">
-		<param name="vetex_x_scale" value="1.0"/>
-		<param name="vetex_y_scale" value="1.0"/>
-		<param name="vetex_z_scale" value="1.0"/>
+   	<param name="max_speed_x" value="0.1"/>
+	  <param name="max_speed_y" value="0.1"/>
+	  <param name="max_speed_r" value="0.5"/>
+	  <param name="min_speed_x" value="0.01"/>
+	  <param name="min_speed_y" value="0.01"/>
+	  <param name="min_speed_r" value="0.05"/>
 	</node>
 </launch>
