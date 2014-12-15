@@ -11,8 +11,8 @@
     <param name="ipaddress" value="$(arg ip)"/>
     <param name="port" value="$(arg port)"/>
     <rosparam>
-      mode: 4 <!--Operating Mode: 0=powerdown, 1=standby, 2=mapping, 3-=ladnmark, 4=navigation -->
-      perform_mapping: false <!-- Perform mapping before going into mode -->
+      mode: 4 <!--Operating Mode: 0=powerdown, 1=standby, 2=mapping, 3-=landmark, 4=navigation -->
+      perform_mapping: false <!-- Perform mapping then exit -->
       wait_command: 1
       mask_command: 2 <!--Mask: Landmarkmode 0=reflectors, 1=reflectors+scan; Nav mode 0=pose+reflectors, 1=pose+scan, 2=pose+reflectors+scan -->
       frame_id: "odom"
