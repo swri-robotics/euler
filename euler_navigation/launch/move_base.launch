@@ -6,8 +6,8 @@
             file="$(find euler_navigation)/params/costmap_common.yaml" />
         <rosparam command="load"
             file="$(find euler_navigation)/params/move_base.yaml" />
-        <rosparam command="load" ns="DWAPlannerROS"
-            file="$(find euler_navigation)/params/dwa.yaml" />
+        <rosparam command="load" ns="SimpleLocalPlanner"
+            file="$(find euler_navigation)/params/simple_local.yaml" />
 
         <remap from="cmd_vel" to="/euler/cmd_vel"/>
         <remap from="odom" to="/euler/odom_smooth"/>
