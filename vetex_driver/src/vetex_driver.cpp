@@ -58,6 +58,7 @@ public:
 	  }
     
     setEnable(false);
+    ros::Duration(1.0f).sleep();
 	  vetex_terminate();
 
     return true;
@@ -95,9 +96,10 @@ protected:
   void setEnable(bool enable)
   {
     if(enable)
-    {
+    {      
+      vetex_enable_movement();         
+      ros::Duration(0.5f).sleep();   
       vetex_set_all_percentages(0, 0, 0);
-      vetex_enable_movement();
       ROS_INFO_STREAM("Movement enabled");
       enabled_ = true;
     }
