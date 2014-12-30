@@ -115,7 +115,7 @@ protected:
 
   void twistCallback(const geometry_msgs::Twist::ConstPtr& msg)
   {
-	  ROS_INFO("Received %f, %f, %f",msg->linear.x, msg->linear.y,msg->angular.z);
+	  ROS_DEBUG("Received %f, %f, %f",msg->linear.x, msg->linear.y,msg->angular.z);
 
 	  if ( ! enabled_) 
     {
@@ -127,12 +127,22 @@ protected:
 	  // velocity into a percentage from -100 to 100.
 	  // They are retrieved just before the spinonce in the main function.
 
+    //xf,yf, rf - are base velocities in the base coordiate system (as specified in the URDF)
     double xf = computeScaleFactor(SCALE_MAX_X,SCALE_MIN_X, max_speed_x_,min_speed_x_,msg->linear.x);
     double yf = computeScaleFactor(SCALE_MAX_Y,SCALE_MIN_Y, max_speed_y_,min_speed_y_,msg->linear.y);
-    double rf = -computeScaleFactor(SCALE_MAX_R,SCALE_MIN_R, max_speed_r_,min_speed_r_, msg->angular.z); // rotation is flipped
+    double rf = computeScaleFactor(SCALE_MAX_R,SCALE_MIN_R, max_speed_r_,min_speed_r_, msg->angular.z); // rotation is flipped
+    ROS_DEBUG_STREAM("Scale factors(in URDF frame) x: "<<xf<<" y: "<<yf<<" r: "<<rf);
 
-    ROS_INFO_STREAM("Scale factors x: "<<xf<<" y: "<<yf<<" r: "<<rf);
-	  vetex_set_all_percentages(xf, yf, rf);
+    // rxf, ryf, rrf - are reoriented base velocites as assumed by the controller(note, 
+    // the rotation orientation is flipped because the controller is not a
+    // right-handed frame - this is probably due to mimicing the hand control outputs which
+    // aren't really a coordinate frame)
+    double rxf = yf;
+    double ryf = -xf;
+    double rrf = -rf;
+    ROS_DEBUG_STREAM("Reoriented factors(in base controller 'frame') x: "<<rxf<<" y: "<<ryf<<" r: "<<rrf);
+
+	  vetex_set_all_percentages(rxf, ryf, rrf);
   }
 
   void enableCallback(const std_msgs::Bool::ConstPtr& msg)
