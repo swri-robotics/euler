@@ -6,7 +6,7 @@ base_local_planner: simple_local_planner/SimpleLocalPlanner
 footprint: [[1.2192,0.6096],[-1.2192,0.6096],[-1.2192,-0.6096],[1.2192,-0.6096],[1.3,0]]
 #footprint: [[0.6096,1.2192],[0.6096,-1.2192],[-0.6096,-1.2192],[-0.6096, 1.2192]]
 GlobalPlanner:
-    orientation_mode: 3
+    orientation_mode: 2
 global_costmap:
     plugins:
     - {name: static_layer, type: 'costmap_2d::StaticLayer'}
