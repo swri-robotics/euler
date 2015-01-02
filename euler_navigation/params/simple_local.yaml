@@ -1,3 +1,15 @@
 base_frame: /vetex_base_footprint
-forward_angle: 0
+
+max_trans_vel: 1.0   # Max x or y velocity that planner will publish
+max_rot_vel: 1.0     # Max rotation velocity that planner will publish
+
+
+position_precision: 0.05        # Final position must be this close
+orientation_precision: 0.05     # Final orientation must be this close
+
+scale_trans: 2.0        # Scaling factor - increase this to have it translate quicker
+scale_rot: 5.0          # Scaling factor2 - increase this to have it rotate quicker
+
+position_window: 0.8
+orientation_window: .25
 
