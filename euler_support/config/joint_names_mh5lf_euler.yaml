@@ -1,0 +1,1 @@
+controller_joint_names: ['motoman_joint_s', 'motoman_joint_l', 'motoman_joint_u', 'motoman_joint_r', 'motoman_joint_b', 'motoman_joint_t']
