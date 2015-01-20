@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<robot name="euler_calibration" xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find industrial_extrinsic_cal)/urdf/asus_sensor_cal_macro.xacro" />
+
+    <link name="world_frame" />
+
+    <link name="target_frame" >
+      <visual>
+        <origin xyz="0.0 0.0 0.0" />
+        <geometry>
+          <box size="0.1143 0.1143 0.025" />
+        </geometry>
+      </visual>
+    </link>
+
+     <joint name="$world_2_cal_target" type="fixed" >
+        <parent link="world_frame" />
+	      <child link="target_frame" />
+	      <origin rpy="-3.0876 0.23245 0.013157" xyz="0.649 -.161 0.289" />
+     </joint>
+
+     <xacro:asus_sensor_definitions prefix="asus" parent_link="world_frame" />
+
+</robot>

@@ -1,0 +1,7 @@
+---
+asus_link_pitch_joint: -2.5
+asus_link_roll_joint:  0.0
+asus_link_x_joint: 0.15
+asus_link_y_joint: 0.0
+asus_link_yaw_joint: 3.14
+asus_link_z_joint: -.01

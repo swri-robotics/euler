@@ -1,0 +1,11 @@
+upper
+xmin= 125
+xmax= 165
+ymin= 110
+ymax= 165
+
+lower
+xmin= 190
+xmax= 290
+ymin= 290
+ymax= 390

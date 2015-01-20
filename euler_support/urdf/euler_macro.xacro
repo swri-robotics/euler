@@ -3,13 +3,15 @@
 
 <xacro:include filename="$(find vetex_support)/urdf/vetex_macro.xacro" />
 <xacro:include filename="$(find motoman_mh5lf_support)/urdf/mh5lf_macro.xacro" />
-<xacro:include filename="$(find euler_support)/urdf/asus_xtion_pro.xacro" />
+<!--xacro:include filename="$(find euler_support)/urdf/asus_xtion_pro.xacro" /-->
+<xacro:include filename="$(find industrial_extrinsic_cal)/urdf/asus_sensor_cal_macro.xacro" />
 <xacro:include filename="$(find euler_support)/urdf/eef_macro.xacro" />
 
         <xacro:macro name="euler" params="prefix">
         <xacro:vetex prefix="vetex_" />
         <xacro:motoman_mh5lf prefix="motoman_" />
-        <xacro:asus_xtion_pro sensor_name="" off_x="0.461" off_y="0" off_z="2.103" off_rr="1.5708" off_rp="1.8849" off_ry="0"/>       
+        <!--xacro:asus_xtion_pro sensor_name="" off_x="0.461" off_y="0" off_z="2.103" off_rr="1.5708" off_rp="1.8849" off_ry="0"/-->       
+        <xacro:asus_sensor_definitions prefix="asus" parent_link="motoman_base_link" />
         <xacro:eef prefix=""/>         
         
         <!--link list -->
