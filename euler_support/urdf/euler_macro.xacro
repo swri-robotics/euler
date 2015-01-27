@@ -180,12 +180,12 @@
         <joint name="motoman_base_to_cal_target1" type="fixed">
                 <parent link="motoman_base_link" />
                 <child link="calibration_target1" />
-                <origin xyz="0.4 0 0.7" rpy="3.1416 0 0" />
+                <origin xyz="0.7 -0.14 0.7" rpy="3.1416 0 0" />
         </joint>
         <joint name="motoman_base_to_cal_target2" type="fixed">
                 <parent link="motoman_base_link" />
                 <child link="calibration_target2" />
-                <origin xyz="0.3 0 1.2" rpy="3.1416 0 0" />
+                <origin xyz="0.4 0.0 1.2" rpy="3.1416 0 0" />
         </joint>
 
         

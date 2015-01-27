@@ -1,6 +1,6 @@
-asus_link_pitch_joint: -0.8443989571784246
+asus_link_pitch_joint: -1.2
 asus_link_roll_joint: 3.082024160980045
-asus_link_x_joint: 0.3379860714665704
-asus_link_y_joint: -0.08035760591464478
+asus_link_x_joint: 0.38
+asus_link_y_joint: -0.06
 asus_link_yaw_joint: 0.05685762414252022
-asus_link_z_joint: -0.02778430152857983
+asus_link_z_joint: 0.02

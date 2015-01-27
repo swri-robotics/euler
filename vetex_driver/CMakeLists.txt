@@ -4,6 +4,7 @@ project(vetex_driver)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
+add_definitions("-std=c++0x")
 find_package(catkin REQUIRED COMPONENTS
              roscpp
 	     std_msgs

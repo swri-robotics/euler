@@ -7,7 +7,7 @@ max_rot_vel: 1.0     # Max rotation velocity that planner will publish
 position_precision: 0.0125        # Final position must be this close
 orientation_precision: 0.002     # Final orientation must be this close
 
-scale_trans: 2.0        # Scaling factor - increase this to have it translate quicker
+scale_trans: 1.0      # Scaling factor - increase this to have it translate quicker
 scale_rot: 5.0          # Scaling factor2 - increase this to have it rotate quicker
 
 position_window: 0.8
