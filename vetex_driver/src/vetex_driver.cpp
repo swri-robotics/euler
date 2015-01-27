@@ -13,8 +13,8 @@ static const double SCALE_MIN_Y = 20.0f;
 static const double SCALE_MAX_R = 100.0f;
 static const double SCALE_MIN_R = 20.0f; 
 static const double THROTLE_SCALE_FACTOR = 40.0f; 
-static const double RAMP_TIME = 0.1;
-static const int RAMP_INCREMENTS = 5;
+static const double RAMP_TIME = 0.25f;
+static const int RAMP_INCREMENTS = 10;
 
 
 class VetexDriver
