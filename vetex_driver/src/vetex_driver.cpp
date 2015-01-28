@@ -15,6 +15,8 @@ static const double SCALE_MIN_R = 20.0f;
 static const double THROTLE_SCALE_FACTOR = 40.0f; 
 static const double RAMP_TIME = 0.25f;
 static const int RAMP_INCREMENTS = 10;
+static const double STOP_RAMP_TIME = 0.25f;
+static const int STOP_RAMP_INCREMENTS = 10; 
 
 
 class VetexDriver
@@ -22,9 +24,7 @@ class VetexDriver
 public:
   VetexDriver():
     enabled_(false),
-    throtle_scale_factor_(THROTLE_SCALE_FACTOR),
-    ramp_time_(RAMP_TIME),
-    num_ramp_increments_(RAMP_INCREMENTS) 
+    throtle_scale_factor_(THROTLE_SCALE_FACTOR)
   {
 
   }
@@ -85,6 +85,9 @@ protected:
 	  n.param("max_speed_r", max_speed_r_, 0.5); // m/sec
 	  n.param("min_speed_r", min_speed_r_, 0.05);// m/sec
     n.param("throtle_scale_factor", throtle_scale_factor_, THROTLE_SCALE_FACTOR);// m/sec
+    n.param("ramp_time",ramp_time_,RAMP_TIME); // secs
+    n.param("ramp_increments",num_ramp_increments_,RAMP_INCREMENTS); // int
+    
 
     ROS_INFO_STREAM("Driver Parameters :\n"<<
       "\n\tmax_speed_x: "<<max_speed_x_<<
@@ -93,19 +96,25 @@ protected:
       "\n\tmin_speed_x: "<<min_speed_x_<<
       "\n\tmin_speed_y: "<<min_speed_y_<<
       "\n\tmin_speed_r: "<<min_speed_r_<<
+      "\n\tramp_time: "<<ramp_time_<<
+      "\n\tramp_increments: "<<num_ramp_increments_<<
       "\n\tthrotle_scale: "<<throtle_scale_factor_<<"\n");
       
     current_twist_.linear.x = 0;
     current_twist_.linear.y = 0;
     current_twist_.angular.z = 0;
-
+    
     vetex_initialize();
+    
+    //signal(SIGINT,&VetexDriver::stopOnShutdown,this);
 
     return true;
   }
 
   void setEnable(bool enable)
   {
+  
+    geometry_msgs::Twist target_twist;
     if(enable)
     {      
       vetex_enable_movement();         
@@ -120,17 +129,25 @@ protected:
     }
     else
     {
+    
+      target_twist.linear.x = 0;
+      target_twist.linear.y = 0;
+      target_twist.angular.z = 0;
+    
+      rampToSpeed(target_twist,STOP_RAMP_TIME,STOP_RAMP_INCREMENTS);    
       vetex_set_all_percentages(0, 0, 0);
-      ros::Duration(0.5f).sleep(); 
-      current_twist_.linear.x = 0;
-      current_twist_.linear.y = 0;
-      current_twist_.angular.z = 0;
+      ros::Duration(0.2f).sleep(); 
       vetex_disable_movement();
       
       ROS_INFO_STREAM("Movement disabled");   
       enabled_ = false;   
     }
 
+  }
+  
+  void stopOnShutdown(int sig)
+  {
+    ROS_WARN_STREAM("Vetex stopOnShutdown(...) invoked");  
   }
 
   void twistCallback(const geometry_msgs::Twist::ConstPtr& msg)
