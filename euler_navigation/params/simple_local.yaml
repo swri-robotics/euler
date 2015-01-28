@@ -4,7 +4,7 @@ max_trans_vel: 0.7   # Max x or y velocity that planner will publish
 max_rot_vel: 1.0     # Max rotation velocity that planner will publish
 
 
-position_precision: 0.035       # Final position must be this close
+position_precision: 0.025       # Final position must be this close
 orientation_precision: 0.02     # Final orientation must be this close
 
 scale_trans: 1.0 #1.0      # Scaling factor - increase this to have it translate quicker
