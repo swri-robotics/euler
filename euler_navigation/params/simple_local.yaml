@@ -4,8 +4,8 @@ max_trans_vel: 0.7   # Max x or y velocity that planner will publish
 max_rot_vel: 1.0     # Max rotation velocity that planner will publish
 
 # Goal precision/window
-position_precision: 0.01       # Final position must be this close
-orientation_precision: 0.01     # Final orientation must be this close
+position_precision: 0.05       # Final position must be this close
+orientation_precision: 0.05     # Final orientation must be this close
 
 # Control gains (p=proportional,d=derivative)
 t_p_gain: 2.0 #1.0      
@@ -17,6 +17,6 @@ r_d_gain: 5.0 #5.0
 position_window: 1.0
 orientation_window: 1.0
 position_deadband: 0.05
-orientation_deadband: 0.02
+orientation_deadband: 0.05
 
 
