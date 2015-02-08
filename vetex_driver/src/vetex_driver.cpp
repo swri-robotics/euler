@@ -7,16 +7,18 @@
 #include <boost/thread.hpp>
 
 static const double SCALE_MAX_X = 100.0f;
-static const double SCALE_MIN_X = 20.0f;
+static const double SCALE_MIN_X = 10.0f;
 static const double SCALE_MAX_Y = 100.0f;
-static const double SCALE_MIN_Y = 20.0f;
+static const double SCALE_MIN_Y = 10.0f;
 static const double SCALE_MAX_R = 100.0f;
-static const double SCALE_MIN_R = 20.0f; 
+static const double SCALE_MIN_R = 10.0f; 
 static const double THROTLE_SCALE_FACTOR = 40.0f; 
-static const double RAMP_TIME = 0.25f;
-static const int RAMP_INCREMENTS = 10;
-static const double STOP_RAMP_TIME = 0.25f;
-static const int STOP_RAMP_INCREMENTS = 10; 
+static const double MAX_ACC = 100.0/0.025; //0->100 in 0.25 sec
+static const double RAMP_TIME_INC = 0.020; //time step for incrementing velocity (sec)
+//static const double RAMP_TIME = 0.25f;
+//static const int RAMP_INCREMENTS = 10;
+//static const double STOP_RAMP_TIME = 0.25f;
+//static const int STOP_RAMP_INCREMENTS = 10; 
 
 
 class VetexDriver
@@ -85,8 +87,10 @@ protected:
 	  n.param("max_speed_r", max_speed_r_, 0.5); // m/sec
 	  n.param("min_speed_r", min_speed_r_, 0.05);// m/sec
     n.param("throtle_scale_factor", throtle_scale_factor_, THROTLE_SCALE_FACTOR);// m/sec
-    n.param("ramp_time",ramp_time_,RAMP_TIME); // secs
-    n.param("ramp_increments",num_ramp_increments_,RAMP_INCREMENTS); // int
+    //n.param("ramp_time",ramp_time_,RAMP_TIME); // secs
+    //n.param("ramp_increments",num_ramp_increments_,RAMP_INCREMENTS); // int
+    n.param("max_acc", max_acc_, MAX_ACC);
+    n.param("ramp_time_inc", ramp_time_incr_, RAMP_TIME_INC);
     
 
     ROS_INFO_STREAM("Driver Parameters :\n"<<
@@ -96,9 +100,8 @@ protected:
       "\n\tmin_speed_x: "<<min_speed_x_<<
       "\n\tmin_speed_y: "<<min_speed_y_<<
       "\n\tmin_speed_r: "<<min_speed_r_<<
-      "\n\tramp_time: "<<ramp_time_<<
-      "\n\tramp_increments: "<<num_ramp_increments_<<
-      "\n\tthrotle_scale: "<<throtle_scale_factor_<<"\n");
+      "\n\tmax_acc: "<<max_acc_<<
+      "\n\tramp_time_inc: "<<ramp_time_incr_<<"\n");
       
     current_twist_.linear.x = 0;
     current_twist_.linear.y = 0;
@@ -134,7 +137,7 @@ protected:
       target_twist.linear.y = 0;
       target_twist.angular.z = 0;
     
-      rampToSpeed(target_twist,STOP_RAMP_TIME,STOP_RAMP_INCREMENTS);    
+      rampToSpeed(target_twist);    
       vetex_set_all_percentages(0, 0, 0);
       ros::Duration(0.2f).sleep(); 
       vetex_disable_movement();
@@ -185,36 +188,97 @@ protected:
     target_twist.linear.y = ryf;
     target_twist.angular.z = rrf;
     
-    rampToSpeed(target_twist,ramp_time_,num_ramp_increments_);
+    rampToSpeed(target_twist);
 
 	  //vetex_set_all_percentages(rxf, ryf, rrf);
   }
   
     
-  bool rampToSpeed(const geometry_msgs::Twist& target_twist, double ramp_time, int num_increments)
+  bool rampToSpeed(const geometry_msgs::Twist& target_twist)
   {
-    std::vector<double> speeds(3,0);
-    std::vector<double> increments(3,0);
-    bool ramping_up = true;
-    ros::Duration ramp_pause = ros::Duration(ramp_time/num_increments);
-
-    increments[0] = (target_twist.linear.x - current_twist_.linear.x)/num_increments;
-    increments[1] = (target_twist.linear.y - current_twist_.linear.y)/num_increments;
-    increments[2] = (target_twist.angular.z - current_twist_.angular.z)/num_increments;
+    ros::Rate r(1.0/ramp_time_incr_);
+    bool x_ramp_done, y_ramp_done, z_ramp_done;
+     x_ramp_done = y_ramp_done = z_ramp_done = false;
+    
+    geometry_msgs::Twist ramp_speed = current_twist_;
 
     ROS_WARN_STREAM("Ramping to twist "<<target_twist.linear.x <<", "<<target_twist.linear.y <<", "<<target_twist.angular.z );
-    for(int i = 1;i <= num_increments;i++)
-    {    
-      speeds[0] = current_twist_.linear.x + increments[0]*i;
-      speeds[1] = current_twist_.linear.y + increments[1]*i;
-      speeds[2] = current_twist_.angular.z + increments[2]*i;
+    while(true)
+    {
+      //X-twist ramping
+      if( target_twist.linear.x > current_twist_.linear.x ) //accelerating   
+      {
+        ramp_speed.linear.x = ramp_speed.linear.x + max_acc_ * ramp_time_incr_;
+        if( ramp_speed.linear.x > target_twist.linear.x) 
+        {
+          ramp_speed.linear.x = target_twist.linear.x;
+          x_ramp_done = true;
+        }
+      }
+      else //declerating
+      {
+        ramp_speed.linear.x = ramp_speed.linear.x - max_acc_ * ramp_time_incr_;
+        if( ramp_speed.linear.x < target_twist.linear.x)
+        {
+          ramp_speed.linear.x = target_twist.linear.x;
+          x_ramp_done = true;
+        }
+      }
       
-      vetex_set_all_percentages(speeds[0], speeds[1], speeds[2]);
+      //Y-twist ramping
+      if( target_twist.linear.y > current_twist_.linear.y ) //accelerating   
+      {
+        ramp_speed.linear.y = ramp_speed.linear.y + max_acc_ * ramp_time_incr_;
+        if( ramp_speed.linear.y > target_twist.linear.y) 
+        {
+          ramp_speed.linear.y = target_twist.linear.y;
+          y_ramp_done = true;
+        }
+      }
+      else //declerating
+      {
+        ramp_speed.linear.y = ramp_speed.linear.y - max_acc_ * ramp_time_incr_;
+        if( ramp_speed.linear.y < target_twist.linear.y)
+        {
+          ramp_speed.linear.y = target_twist.linear.y;
+          y_ramp_done = true;
+        }
+      }
       
-      ramp_pause.sleep();
-    } 
+      
+      if( target_twist.angular.z > current_twist_.angular.z ) //accelerating   
+      {
+        ramp_speed.angular.z = ramp_speed.angular.z + max_acc_ * ramp_time_incr_;
+        if( ramp_speed.angular.z > target_twist.angular.z)
+        {
+          ramp_speed.angular.z = target_twist.angular.z;
+          z_ramp_done = true;
+        }
+      }
+      else //declerating
+      {
+        ramp_speed.angular.z = ramp_speed.angular.z - max_acc_ * ramp_time_incr_;
+        if( ramp_speed.angular.z < target_twist.angular.z)
+        {
+          ramp_speed.angular.z = target_twist.angular.z;
+          z_ramp_done = true;
+        }
+      }
+      
+      ROS_WARN_STREAM("Ramping speed: " << ramp_speed.linear.x << ", " << ramp_speed.linear.y << ", " << ramp_speed.angular.z );
+      vetex_set_all_percentages(ramp_speed.linear.x, ramp_speed.linear.y, ramp_speed.angular.z);
+      
+      if(x_ramp_done && y_ramp_done && z_ramp_done)
+      {
+        break;
+      }
+      else
+      {
+        r.sleep();
+      }
+    }    
     
-    ROS_WARN_STREAM("Reached goal twist with twist "<<speeds[0]<<" y: "<<speeds[1]<<" r: "<<speeds[2]);
+    ROS_WARN_STREAM("Reached speeds: " << ramp_speed.linear.x << ", " << ramp_speed.linear.y << ", " << ramp_speed.angular.z );
     
     // saving current twist
     current_twist_ = target_twist;    
@@ -265,8 +329,9 @@ protected:
   double max_speed_r_;
   double min_speed_r_;
   double throtle_scale_factor_;
-  double ramp_time_;
-  int num_ramp_increments_;
+  //double ramp_time_;
+  //int num_ramp_increments_;
+  double max_acc_, ramp_time_incr_;
   
   geometry_msgs::Twist current_twist_;
 

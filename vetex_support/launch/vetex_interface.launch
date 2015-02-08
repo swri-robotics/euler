@@ -8,14 +8,14 @@
 -->
   <remap from="vetexvels" to="euler/cmd_vel"/>
 	<node name="vetex_driver" pkg="vetex_driver" type="vetex_driver" output="screen">
-   	<param name="max_speed_x" value="1"/>
-	  <param name="max_speed_y" value="1"/>
-	  <param name="max_speed_r" value="1"/>
+   	<param name="max_speed_x" value="1.08"/>
+	  <param name="max_speed_y" value="1.08"/>
+	  <param name="max_speed_r" value="0.41"/>
 	  <param name="min_speed_x" value="0.001"/>
 	  <param name="min_speed_y" value="0.001"/>
 	  <param name="min_speed_r" value="0.001"/>
     <param name="throtle_scale_factor" value="100"/>
-    <param name="ramp_time" value="0.25"/>
-    <param name="ramp_increments" value="10"/>
+    <param name="max_acc" value="400"/>
+    <param name="ramp_time_inc" value="0.05"/>
 	</node>
 </launch>
