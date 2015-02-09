@@ -14,6 +14,7 @@ static const double SCALE_MAX_R = 100.0f;
 static const double SCALE_MIN_R = 10.0f; 
 static const double THROTLE_SCALE_FACTOR = 40.0f; 
 static const double MAX_ACC = 100.0/0.025; //0->100 in 0.25 sec
+static const double MAX_DECEL = 0.5 * MAX_ACC; //should be able to decelerate faster (maybe)
 static const double RAMP_TIME_INC = 0.020; //time step for incrementing velocity (sec)
 //static const double RAMP_TIME = 0.25f;
 //static const int RAMP_INCREMENTS = 10;
@@ -90,6 +91,7 @@ protected:
     //n.param("ramp_time",ramp_time_,RAMP_TIME); // secs
     //n.param("ramp_increments",num_ramp_increments_,RAMP_INCREMENTS); // int
     n.param("max_acc", max_acc_, MAX_ACC);
+    n.param("max_decel", max_decel_, MAX_DECEL); 
     n.param("ramp_time_inc", ramp_time_incr_, RAMP_TIME_INC);
     
 
@@ -101,6 +103,7 @@ protected:
       "\n\tmin_speed_y: "<<min_speed_y_<<
       "\n\tmin_speed_r: "<<min_speed_r_<<
       "\n\tmax_acc: "<<max_acc_<<
+      "\n\tmax_decel: " << max_decel_ <<
       "\n\tramp_time_inc: "<<ramp_time_incr_<<"\n");
       
     current_twist_.linear.x = 0;
@@ -205,65 +208,9 @@ protected:
     ROS_WARN_STREAM("Ramping to twist "<<target_twist.linear.x <<", "<<target_twist.linear.y <<", "<<target_twist.angular.z );
     while(true)
     {
-      //X-twist ramping
-      if( target_twist.linear.x > current_twist_.linear.x ) //accelerating   
-      {
-        ramp_speed.linear.x = ramp_speed.linear.x + max_acc_ * ramp_time_incr_;
-        if( ramp_speed.linear.x > target_twist.linear.x) 
-        {
-          ramp_speed.linear.x = target_twist.linear.x;
-          x_ramp_done = true;
-        }
-      }
-      else //declerating
-      {
-        ramp_speed.linear.x = ramp_speed.linear.x - max_acc_ * ramp_time_incr_;
-        if( ramp_speed.linear.x < target_twist.linear.x)
-        {
-          ramp_speed.linear.x = target_twist.linear.x;
-          x_ramp_done = true;
-        }
-      }
-      
-      //Y-twist ramping
-      if( target_twist.linear.y > current_twist_.linear.y ) //accelerating   
-      {
-        ramp_speed.linear.y = ramp_speed.linear.y + max_acc_ * ramp_time_incr_;
-        if( ramp_speed.linear.y > target_twist.linear.y) 
-        {
-          ramp_speed.linear.y = target_twist.linear.y;
-          y_ramp_done = true;
-        }
-      }
-      else //declerating
-      {
-        ramp_speed.linear.y = ramp_speed.linear.y - max_acc_ * ramp_time_incr_;
-        if( ramp_speed.linear.y < target_twist.linear.y)
-        {
-          ramp_speed.linear.y = target_twist.linear.y;
-          y_ramp_done = true;
-        }
-      }
-      
-      
-      if( target_twist.angular.z > current_twist_.angular.z ) //accelerating   
-      {
-        ramp_speed.angular.z = ramp_speed.angular.z + max_acc_ * ramp_time_incr_;
-        if( ramp_speed.angular.z > target_twist.angular.z)
-        {
-          ramp_speed.angular.z = target_twist.angular.z;
-          z_ramp_done = true;
-        }
-      }
-      else //declerating
-      {
-        ramp_speed.angular.z = ramp_speed.angular.z - max_acc_ * ramp_time_incr_;
-        if( ramp_speed.angular.z < target_twist.angular.z)
-        {
-          ramp_speed.angular.z = target_twist.angular.z;
-          z_ramp_done = true;
-        }
-      }
+      x_ramp_done = rampAxis(target_twist.linear.x, current_twist_.linear.x, ramp_speed.linear.x);
+      y_ramp_done = rampAxis(target_twist.linear.y, current_twist_.linear.y, ramp_speed.linear.y);
+      z_ramp_done = rampAxis(target_twist.angular.z, current_twist_.angular.z, ramp_speed.angular.z);
       
       ROS_WARN_STREAM("Ramping speed: " << ramp_speed.linear.x << ", " << ramp_speed.linear.y << ", " << ramp_speed.angular.z );
       vetex_set_all_percentages(ramp_speed.linear.x, ramp_speed.linear.y, ramp_speed.angular.z);
@@ -314,7 +261,45 @@ protected:
 
     return af*sign;
   }
-
+  
+  bool rampAxis(double target, double current, double &ramp)
+  {
+    bool done_ramping = false;
+    
+    if( target > current ) //moving positive   
+    { 
+      if ( ramp < 0 ) //decelerating to zero
+      {
+        ramp = ramp + max_decel_ * ramp_time_incr_;
+      }
+      else
+      {
+        ramp = ramp + max_acc_ * ramp_time_incr_;
+      }
+      if( ramp > target) 
+      {
+        ramp = target;
+        done_ramping = true;
+      }
+    }
+    else //moving negative
+    {
+      if ( ramp  > 0 )
+      {
+        ramp = ramp - max_decel_ * ramp_time_incr_;
+      }
+      else
+      {
+        ramp = ramp - max_acc_ * ramp_time_incr_;
+      }
+      if( ramp < target )
+      {
+        ramp = target;
+        done_ramping = true;
+      }
+    }
+    return done_ramping;
+  }
 
 protected:
 
@@ -331,7 +316,7 @@ protected:
   double throtle_scale_factor_;
   //double ramp_time_;
   //int num_ramp_increments_;
-  double max_acc_, ramp_time_incr_;
+  double max_acc_, max_decel_, ramp_time_incr_;
   
   geometry_msgs::Twist current_twist_;
 
