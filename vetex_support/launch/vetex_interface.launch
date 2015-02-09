@@ -17,6 +17,6 @@
     <param name="throtle_scale_factor" value="100"/>
     <param name="max_acc" value="75"/>
     <param name="max_decel" value="300"/>
-    <param name="ramp_time_inc" value="0.05"/>
+    <param name="ramp_time_inc" value="0.01"/>
 	</node>
 </launch>

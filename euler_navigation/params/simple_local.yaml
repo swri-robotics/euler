@@ -9,7 +9,7 @@ orientation_precision: 0.04     # Final orientation must be this close
 
 # Control gains (p=proportional,d=derivative)
 t_p_gain: 2.0 #1.0    
-t_d_gain: 2.0 #5.0        
+t_d_gain: 1.0 #5.0        
 ##t_d_gain: 4.0 #5.0         
 r_p_gain: 2.0 #1.0
 r_d_gain: 0.0
