@@ -46,15 +46,15 @@ wsdo#1,2300,19,01,3c
 ```
 
 ### Settings Table
-|  Read Command  | SubIndex(dec) | SubIndex(hex) | Default (dec) | Default (hex) |Desired (dec) | Desired (hex) |Size |
-|:--------------:|:-------------:|:-------------:|:-------------:|:-------------:|:------------:|:-------------:|:---:|
-| rsdo#1,2300,f  |      15       |       f       |      320      |      140      |     480      |       1e0     |  02 |
-| rsdo#1,2300,10 |      16       |      10       |      190      |       be      |     320      |       140     |  02 | 
-| rsdo#1,2301,7  |       7       |       7       |       90      |       5a      |     320      |       140     |  02 |
-| rsdo#1,2301,8  |       8       |       8       |       40      |       28      |     108      |        6c     |  01 |
-| rsdo#1,2301,15 |      21       |      15       |       90      |       5a      |      64      |       140     |  02 |
-| rsdo#1,2301,16 |      22       |      16       |       40      |       28      |     320      |        6c     |  02 |
-| rsdo#1,2300,19 |      25       |      19       |       75      |       4b      |      60      |        3c     |  01 |
+|  Read Command  | Description           | SubIndex(dec) | SubIndex(hex) | Default (dec) | Default (hex) |Desired (dec) | Desired (hex) |Size |
+|:--------------:|:---------------------:|:-------------:|:-------------:|:-------------:|:-------------:|:------------:|:-------------:|:---:|
+| rsdo#1,2300,f  | MaxMotorSpeed         |      15       |       f       |      320      |      140      |     480      |       1e0     |  02 |
+| rsdo#1,2300,10 | Description           |      16       |      10       |      190      |       be      |     320      |       140     |  02 | 
+| rsdo#1,2301,7  | Description           |       7       |       7       |       90      |       5a      |     320      |       140     |  02 |
+| rsdo#1,2301,8  | Description           |       8       |       8       |       40      |       28      |     108      |        6c     |  01 |
+| rsdo#1,2301,15 | ZMaxLowSpeed          |      21       |      15       |       90      |       5a      |     320      |       140     |  02 |
+| rsdo#1,2301,16 | ZMaxHighSpeed         |      22       |      16       |       40      |       28      |     108      |        6c     |  02 |
+| rsdo#1,2300,19 | Description           |      25       |      19       |       75      |       4b      |      60      |        3c     |  01 |
 
 ### Saving Parameters
-wsdo#1,1010,4,02,65766173 (Doesn't work??)
+wsdo#1,1010,1,04,65766173
