@@ -4,7 +4,7 @@
 
   <!-- Launch mutable joint state publisher for calibratable transforms -->
   <node  name="mutable_joint_state_publisher" pkg="industrial_extrinsic_cal" type="mutable_joint_state_publisher" >
-    <param name="mutableJointStateYamlFile" value="$(find euler_calibration)/yaml/euler_mutable_joint_states.yaml" />
+    <param name="mutable_joint_state_yaml_file" value="$(find euler_calibration)/yaml/euler_mutable_joint_states.yaml" />
   </node>
 
 </launch>
