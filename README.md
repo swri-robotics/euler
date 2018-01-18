@@ -5,14 +5,14 @@ SwRI mobile manipulation platform
 
 ![Omni-Directional Euler Robot with Industrial Manipulator](EulerRobot.PNG)
 
-# Installation
+# Installation:
 
 The following installation instruction are broken into multiple parts: depedencies installed from source, ROS install, and, amos source install
 
 ## Prerequisites:
 
 ### Install CANFestival libraries for the CAN bus
----------------------------------------------
+
 
 The vetex platform is given velocity commands via the CAN bus, which uses the CANOpen protocol. The open source CANFestival libraries are used on top of linux's socketbus architecture to talk over the CANBus.
 
@@ -32,12 +32,22 @@ Follow all the instructions to install the base version of ROS [Indigo](http://w
  1. Get the wstool package
 `sudo apt-get install python-wstool`
 
- 1. Initialize the Euler workspace in your src directory.
-```
-wstool merge https://raw.githubusercontent.com/swri-robotics/euler/kinetic-devel/euler.rosinstall
-wstool update
-cd ..
-```
+ 1. Create a catkin worspace *euler_ws* using the catkin command as instructed [here](https://catkin-tools.readthedocs.io/en/latest/quick_start.html#initializing-a-new-workspace)
+ 
+ 1. Clone this repository into the source directory using *git clone ...*
+
+ 1. Download the required repositories using *wstool*
+
+  ```
+  cd euler_ws
+  ```  
+  ```
+  wstool merge -t src src/euler/euler.rosinstall
+  ```  
+  ```
+  wstool update
+  ```  
+
  1. Make sure dependencies are installed.  *Note: If this step fails then you may have to install dependencies manually using `sudo apt-get <package>`
 `rosdep install --from-paths src --ignore-src `
  1. Build Euler!
