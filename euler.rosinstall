@@ -1,11 +1,12 @@
-- git: {local-name: euler, uri: 'https://github.com/swri-robotics/euler.git', version: kinetic-devel}
+#- git: {local-name: euler, uri: 'https://github.com/swri-robotics/euler.git', version: kinetic-devel}
 - git: {local-name: motoman, uri: 'https://github.com/ros-industrial/motoman.git', version: kinetic-devel}
 - git: {local-name: sicktoolbox, uri: 'https://github.com/swri-robotics/sicktoolbox.git',
     version: euler_integration}
 - git: {local-name: sicktoolbox_wrapper, uri: 'https://github.com/swri-robotics/sicktoolbox_wrapper.git',
     version: euler_integration}
-#- git: {local-name: industrial_calibration, uri: 'https://github.com/swri-robotics/industrial_calibration.git', version: indigo}
+- git: {local-name: industrial_calibration, uri: 'https://github.com/ros-industrial/industrial_calibration.git', version: kinetic-devel}
 - git: {local-name: simple_local_planner, uri: 'https://github.com/swri-robotics/simple_local_planner.git', version: master}
 #- git: {local-name: navigation, uri: 'https://github.com/swri-robotics/navigation.git', version: gpo_plus_hpp}
 #- git: {local-name: navigation, uri: 'https://github.com/ros-planning/navigation.git', version: kinetic-devel}
+- git: {local-name: ceres-solver, uri: 'https://github.com/ceres-solver/ceres-solver.git', version: master}
 
