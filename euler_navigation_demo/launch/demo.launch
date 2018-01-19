@@ -26,21 +26,20 @@
   <!-- Load the robot joints -->
   <rosparam command="load" file="$(find euler_support)/config/joint_names_mh5lf_euler.yaml"/>
 
-  <!-- run the robot simulator and action interface nodes -->
-  <group if="$(arg sim_robot)">
-    <include file="$(find industrial_robot_simulator)/launch/robot_interface_simulator.launch" />
-  </group>
-
   <!-- run the "real robot" interface nodes -->
   <group unless="$(arg sim_robot)">
+    <remap from="joint_states" to="motoman/joint_states"/>
 	  <include file="$(find motoman_driver)/launch/robot_interface_streaming_$(arg controller).launch">
 		  <arg name="robot_ip"   value="$(arg robot_ip)" />
 	  </include>
   </group>
 
   <!-- run the move group node -->
+
+  <remap if="$(arg sim_robot)" from="move_group/fake_controller_joint_states" to="motoman/joint_states"/>
   <include file="$(find euler_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true" />
+    <arg name="fake_execution" value="$(arg sim_robot)" />
   </include>
 
   <!-- ============== mobile base bringup ============== -->
