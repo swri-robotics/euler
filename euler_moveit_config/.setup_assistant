@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: euler_support
+    relative_path: urdf/euler.xacro
+  SRDF:
+    relative_path: config/euler.srdf
+  CONFIG:
+    author_name: Jorge Nicho
+    author_email: jrgnichodevel@gmail.com
+    generated_timestamp: 1516231047

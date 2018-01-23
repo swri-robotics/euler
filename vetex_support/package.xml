@@ -7,11 +7,7 @@
   <author>Paul Hvass</author>
   <license>BSD</license>
   <buildtool_depend>catkin</buildtool_depend>
-  <run_depend>Vetex_Mobile_Platform</run_depend>
-  <run_depend>gazebo</run_depend>
-  <run_depend>gazebo_worlds</run_depend>
   <run_depend>joint_state_publisher</run_depend>
-  <run_depend>pr2_controller_manager</run_depend>
   <run_depend>robot_state_publisher</run_depend>
   <run_depend>rostopic</run_depend>
   <run_depend>rviz</run_depend>

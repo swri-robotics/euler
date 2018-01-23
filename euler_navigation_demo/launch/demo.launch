@@ -1,15 +1,64 @@
 <?xml version="1.0"?>
 <launch>
-  <include file="$(find euler_navigation_demo)/launch/stage.launch"/>
-  <include file="$(find euler_navigation_demo)/launch/fake_localization.launch"/>
 
-  <!-- mobile base planning -->
-  <include file="$(find euler_navigation)/launch/move_base.launch"/>
+  <arg name="sim_base" default="true"/>  
+  <arg name="sim_robot" default="true"/>
+  <arg name="sim_localization" default="true"/>
+  <arg name="gui" default="true"/>
 
-  <param name="robot_description" command="$(find xacro)/xacro.py $(find euler_support)/urdf/euler.xacro" />
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <arg unless="$(arg sim_robot)" name="robot_ip"/>
+  <arg unless="$(arg sim_localization)" name="sensor_ip"/>
+
+  <!-- load robot model -->
+  <include file="$(find euler_support)/launch/load_euler.launch"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <rosparam param="source_list"> [motoman/joint_states, mutable_joint_states]</rosparam>
+  </node>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
 
-  <node required="true" name="rviz" pkg="rviz" type="rviz" args="-d $(find euler_navigation)/euler_nav.rviz"/>
+  <!-- ============== robot arm motion planning and execution ================= -->
+
+  <!-- load the robot_description parameter before launching ROS-I nodes -->
+  <include file="$(find euler_moveit_config)/launch/planning_context.launch" >
+    <arg name="load_robot_description" value="false" />
+  </include>
+
+  <!-- Load the robot joints -->
+  <rosparam command="load" file="$(find euler_support)/config/joint_names_mh5lf_euler.yaml"/>
+
+  <!-- run the "real robot" interface nodes -->
+  <group unless="$(arg sim_robot)">
+    <remap from="joint_states" to="motoman/joint_states"/>
+	  <include file="$(find motoman_driver)/launch/robot_interface_streaming_$(arg controller).launch">
+		  <arg name="robot_ip"   value="$(arg robot_ip)" />
+	  </include>
+  </group>
+
+  <!-- run the move group node -->
+
+  <remap if="$(arg sim_robot)" from="move_group/fake_controller_joint_states" to="motoman/joint_states"/>
+  <include file="$(find euler_moveit_config)/launch/move_group.launch">
+    <arg name="publish_monitored_planning_scene" value="true" />
+    <arg name="fake_execution" value="$(arg sim_robot)" />
+  </include>
+
+  <!-- ============== mobile base bringup ============== -->
+  <!-- Use stage in simulation -->
+  <include if="$(arg sim_localization)" file="$(find euler_support)/launch/fake_mobile_base.launch"/>
+
+  <!-- Use vetex driver when running in real mode -->
+  <include unless="$(arg sim_base)" file="$(find vetex_support)/launch/vetex_interface.launch"/>
+
+  <!-- ============== localization setup ============== -->
+  <include if="$(arg sim_localization)" file="$(find euler_navigation_demo)/launch/fake_localization.launch"/>
+  <include unless="$(arg sim_localization)" file="$(find euler_support)/launch/localization_interface.launch">
+    <arg name="ip" value="$(arg sensor_ip)"/>
+  </include>
+
+  <!-- ============== mobile base planning ============== -->
+  <include file="$(find euler_navigation)/launch/move_base.launch"/>
+  
+  <!-- visualization -->
+  <include if="$(arg gui)" file="$(find euler_navigation_demo)/launch/euler_rviz.launch"/>
 </launch>
 
