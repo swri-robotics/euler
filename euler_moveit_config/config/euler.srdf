@@ -37,9 +37,9 @@
     <disable_collisions link1="asus_ir_link" link2="asus_rgb_link" reason="Adjacent" />
     <disable_collisions link1="asus_ir_link" link2="front_sick_s300" reason="Never" />
     <disable_collisions link1="asus_ir_link" link2="motoman_base_link" reason="Default" />
-    <disable_collisions link1="asus_ir_link" link2="motoman_link_r" reason="Never" />
-    <disable_collisions link1="asus_ir_link" link2="motoman_link_s" reason="Never" />
+    <disable_collisions link1="asus_ir_link" link2="motoman_link_b" reason="Never" />
     <disable_collisions link1="asus_ir_link" link2="motoman_link_t" reason="Never" />
+    <disable_collisions link1="asus_ir_link" link2="motoman_link_u" reason="Never" />
     <disable_collisions link1="asus_ir_link" link2="rear_sick_s300" reason="Never" />
     <disable_collisions link1="asus_ir_link" link2="vetex_base_link" reason="Never" />
     <disable_collisions link1="asus_ir_link" link2="vetex_left_front_wheel" reason="Never" />
@@ -52,6 +52,7 @@
     <disable_collisions link1="asus_link_x_trans" link2="front_sick_s300" reason="Never" />
     <disable_collisions link1="asus_link_x_trans" link2="motoman_base_link" reason="Adjacent" />
     <disable_collisions link1="asus_link_x_trans" link2="motoman_link_s" reason="Never" />
+    <disable_collisions link1="asus_link_x_trans" link2="motoman_link_t" reason="Never" />
     <disable_collisions link1="asus_link_x_trans" link2="rear_sick_s300" reason="Never" />
     <disable_collisions link1="asus_link_x_trans" link2="sick_nav350" reason="Never" />
     <disable_collisions link1="asus_link_x_trans" link2="vetex_base_link" reason="Never" />
@@ -61,7 +62,9 @@
     <disable_collisions link1="asus_link_x_trans" link2="vetex_right_rear_wheel" reason="Never" />
     <disable_collisions link1="asus_rgb_link" link2="front_sick_s300" reason="Never" />
     <disable_collisions link1="asus_rgb_link" link2="motoman_base_link" reason="Default" />
+    <disable_collisions link1="asus_rgb_link" link2="motoman_link_l" reason="Never" />
     <disable_collisions link1="asus_rgb_link" link2="motoman_link_t" reason="Never" />
+    <disable_collisions link1="asus_rgb_link" link2="motoman_link_u" reason="Never" />
     <disable_collisions link1="asus_rgb_link" link2="rear_sick_s300" reason="Never" />
     <disable_collisions link1="asus_rgb_link" link2="vetex_base_link" reason="Never" />
     <disable_collisions link1="asus_rgb_link" link2="vetex_left_front_wheel" reason="Never" />
