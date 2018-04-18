@@ -5,6 +5,7 @@
   <arg name="sim_robot" default="true"/>
   <arg name="sim_localization" default="true"/>
   <arg name="gui" default="true"/>
+  <arg name="controller" default="fs100" unless="$(arg sim_robot)"/>
 
   <arg unless="$(arg sim_robot)" name="robot_ip"/>
   <arg unless="$(arg sim_localization)" name="sensor_ip"/>
