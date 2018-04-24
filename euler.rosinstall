@@ -1,4 +1,4 @@
-- git: {local-name: motoman, uri: 'https://github.com/ros-industrial/motoman.git', version: kinetic-devel}
+- git: {local-name: motoman, uri: 'https://github.com/Jmeyer1292/motoman.git', version: io_support_kinetic-devel_head_yuvraj}
 - git: {local-name: sicktoolbox, uri: 'https://github.com/swri-robotics/sicktoolbox.git',
     version: euler_integration}
 - git: {local-name: sicktoolbox_wrapper, uri: 'https://github.com/swri-robotics/sicktoolbox_wrapper.git',
