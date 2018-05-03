@@ -1,5 +1,30 @@
 <?xml version="1.0" ?>
 <robot name="euler" xmlns:xacro="http://ros.org/wiki/xacro">
-        <xacro:include filename="$(find euler_support)/urdf/euler_macro.xacro" />
-        <xacro:euler prefix=""/>
+    <xacro:include filename="$(find motoman_mh5lf_support)/urdf/mh5lf_macro.xacro" />
+    <xacro:motoman_mh5lf prefix="motoman_" />
+
+    <xacro:include filename="$(find industrial_extrinsic_cal)/urdf/asus_sensor_cal_macro.xacro" />
+    <xacro:asus_sensor_definitions prefix="asus" parent_link="motoman_base_link" />
+
+    <xacro:include filename="$(find euler_support)/urdf/eef_macro.xacro"/>
+    <xacro:eef prefix=""/>
+
+    <xacro:include filename="$(find euler_support)/urdf/euler_macro.xacro" />
+    <xacro:euler prefix="euler_"/>
+
+    <!--euler to motoman link-->
+    <joint name="euler_to_arm" type="fixed">
+        <parent link="euler_base_link" />
+        <child link="motoman_base_link" />
+        <origin xyz="0.067518 0 2.016" rpy="3.1415 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <!--motoman to end effector link-->
+    <joint name="motoman_link_t_to_eef_base" type="fixed">
+      <parent link="motoman_link_t" />
+      <child link="eef_base" />
+      <origin xyz="0.098 0 0" rpy="0 1.57 0" />
+    </joint>
+
 </robot>

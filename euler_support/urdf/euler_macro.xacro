@@ -2,18 +2,10 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <xacro:include filename="$(find vetex_support)/urdf/vetex_macro.xacro" />
-<xacro:include filename="$(find motoman_mh5lf_support)/urdf/mh5lf_macro.xacro" />
-<!--xacro:include filename="$(find euler_support)/urdf/asus_xtion_pro.xacro" /-->
-<xacro:include filename="$(find industrial_extrinsic_cal)/urdf/asus_sensor_cal_macro.xacro" />
-<xacro:include filename="$(find euler_support)/urdf/eef_macro.xacro" />
 
         <xacro:macro name="euler" params="prefix">
-        <xacro:vetex prefix="vetex_" />
-        <xacro:motoman_mh5lf prefix="motoman_" />
-        <!--xacro:asus_xtion_pro sensor_name="" off_x="0.461" off_y="0" off_z="2.103" off_rr="1.5708" off_rp="1.8849" off_ry="0"/-->       
-        <xacro:asus_sensor_definitions prefix="asus" parent_link="motoman_base_link" />
-        <!--<xacro:eef prefix=""/>-->         
-        
+        <xacro:vetex prefix="${prefix}vetex_" />
+
         <!--link list -->
         <link name="${prefix}base_link"> </link>
 	      <link name="${prefix}localization_frame"/>
@@ -113,13 +105,13 @@
                         </geometry>
                 </collision>
         </link> 
+
         <joint name="${prefix}frame_left" type="fixed" >
                 <parent link="${prefix}base_link" />
                 <child link="${prefix}frame_left" />
                 <origin xyz="0 0 0" rpy="0 0 0" />
                 <axis xyz="0 0 0" />
         </joint>
-
         <joint name="${prefix}frame_right" type="fixed">
                 <parent link="${prefix}base_link" />
                 <child link="${prefix}frame_right" />
@@ -131,21 +123,13 @@
                 <child link="${prefix}frame_top" />
                 <origin xyz="0 0 0" rpy="0 0 0" />
                 <axis xyz="0 0 0" />
-        </joint>     
-         
+        </joint>       
         <joint name="${prefix}to_vetex" type="fixed">
                 <parent link="${prefix}base_link" />
                 <child link="${prefix}vetex_base_link" />
                 <origin xyz="0 0 0" rpy="0 0 0" />
                 <axis xyz="0 0 0" />
         </joint>       
-        <joint name="${prefix}to_arm" type="fixed">
-                <parent link="${prefix}base_link" />
-                <child link="${prefix}motoman_base_link" />
-                <origin xyz="0.067518 0 2.016" rpy="3.1415 0 0" />
-                <axis xyz="0 0 0" />
-        </joint>
-
         <joint name="${prefix}sick_nav350" type="fixed">
                 <parent link="${prefix}base_link" />
                 <child link="${prefix}sick_nav350" />
@@ -170,11 +154,6 @@
                 <origin xyz="-2.280 0.617 0.532" rpy="0 0  -3.96178" />
                 <axis xyz="0 0 0" />
         </joint>
-        <!--<joint name="motoman_link_t_to_eef_base" type="fixed">
-                <parent link="motoman_link_t" />
-                <child link="eef_base" />
-                <origin xyz="0.098 0 0" rpy="0 1.57 0" />
-        </joint>-->
 
         
 </xacro:macro>
