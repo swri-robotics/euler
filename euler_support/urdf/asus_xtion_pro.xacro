@@ -25,28 +25,28 @@
     </collision>
   </link>
 
-  <joint name="${sensor_name}_base-bodycenter-prism-x" type="fixed">
+  <joint name="${sensor_name}base-bodycenter-prism-x" type="fixed">
     <origin xyz="${off_x} ${off_y} ${off_z}" rpy="${off_rr} ${off_rp} ${off_ry}" />
     <parent link="base_link" />
-    <child link="${sensor_name}_bodycenter" />
+    <child link="${sensor_name}bodycenter" />
   </joint>
 
 
-  <joint name="${sensor_name}_depth_joint" type="fixed">
+  <joint name="${sensor_name}depth_joint" type="fixed">
     <origin xyz="0.049 0 0" rpy="0 0 0" />
-    <parent link="${sensor_name}_bodycenter" />
-    <child link="${sensor_name}_depth_frame" />
+    <parent link="${sensor_name}bodycenter" />
+    <child link="${sensor_name}depth_frame" />
   </joint>
 
-  <link name="${sensor_name}_depth_frame" />
+  <link name="${sensor_name}depth_frame" />
 
-  <joint name="${sensor_name}_rgb_joint" type="fixed">
+  <joint name="${sensor_name}rgb_joint" type="fixed">
     <origin xyz="0.022 0 0" rpy="0 0 0" />
-    <parent link="${sensor_name}_bodycenter" />
-    <child link="${sensor_name}_rgb_frame" />
+    <parent link="${sensor_name}bodycenter" />
+    <child link="${sensor_name}rgb_frame" />
   </joint>
 
-  <link name="${sensor_name}_rgb_frame" />
+  <link name="${sensor_name}rgb_frame" />
 
 
 </xacro:macro>
