@@ -12,8 +12,9 @@
   <arg name="robot_ip" />
 
   <!-- Manipulator -->
-	<rosparam command="load" file="$(find euler_support)/config/joint_names_mh5lf_euler.yaml" />
+  <rosparam command="load" file="$(find euler_support)/config/joint_names_mh5lf_euler.yaml" />
 
+  <remap from="joint_states" to="robot_joint_states"/>
   <include file="$(find motoman_driver)/launch/robot_state_fs100.launch">
     <arg name="robot_ip"   value="$(arg robot_ip)" />
   </include>
