@@ -1,12 +1,17 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="euler" params="prefix">
+    <!-- Robot -->
+    <xacro:property name="robot_prefix" value="motoman_"/>
     <xacro:include filename="$(find motoman_mh5lf_support)/urdf/mh5lf_macro.xacro"/>
-    <xacro:motoman_mh5lf prefix="${prefix}motoman_"/>
+    <xacro:motoman_mh5lf prefix="${prefix+robot_prefix}"/>
+    <!-- Sensor -->
     <xacro:include filename="$(find industrial_extrinsic_cal)/urdf/asus_sensor_cal_macro.xacro"/>
-    <xacro:asus_sensor_definitions prefix="${prefix}asus" parent_link="euler_motoman_base_link"/>
+    <xacro:asus_sensor_definitions prefix="${prefix}asus" parent_link="${robot_prefix}base_link"/>
+    <!-- End effector -->
     <xacro:include filename="$(find euler_support)/urdf/eef_macro.xacro"/>
     <xacro:eef prefix="${prefix}eef_"/>
+    <!-- Mobile Platform -->
     <xacro:include filename="$(find vetex_support)/urdf/vetex_macro.xacro"/>
     <xacro:vetex prefix="${prefix}vetex_"/>
     <!--link list -->
@@ -159,13 +164,13 @@
     <!--euler to motoman link-->
     <joint name="${prefix}platform_to_arm" type="fixed">
       <parent link="${prefix}base_link"/>
-      <child link="${prefix}motoman_base_link"/>
+      <child link="${prefix+robot_prefix}base_link"/>
       <origin xyz="0.067518 0 2.016" rpy="3.1415 0 0"/>
       <axis xyz="0 0 0"/>
     </joint>
     <!--motoman to end effector link-->
-    <joint name="${prefix}motoman_link_t_to_eef_base" type="fixed">
-      <parent link="${prefix}motoman_link_t"/>
+    <joint name="${prefix+robot_prefix}link_t_to_eef_base" type="fixed">
+      <parent link="${prefix+robot_prefix}link_t"/>
       <child link="${prefix}eef_eef_base"/>
       <origin xyz="0.098 0 0" rpy="0 1.57 0"/>
     </joint>

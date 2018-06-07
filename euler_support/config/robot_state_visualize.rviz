@@ -1,16 +1,14 @@
 Panels:
   - Class: rviz/Displays
-    Help Height: 78
+    Help Height: 89
     Name: Displays
     Property Tree Widget:
       Expanded:
         - /Global Options1
         - /Status1
-        - /RobotModel1
-        - /TF1
         - /TF1/Frames1
-      Splitter Ratio: 0.5
-    Tree Height: 787
+      Splitter Ratio: 0.600558639
+    Tree Height: 780
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -60,173 +58,173 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        euler_asus__frame:
+        asus_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_asus__ir_link:
+        asus_ir_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_asus__ir_optical_frame:
+        asus_ir_optical_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        euler_asus__link:
+        asus_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        euler_asus__link_pitch:
+        asus_link_pitch:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        euler_asus__link_x_trans:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        euler_asus__link_y_trans:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        euler_asus__link_yaw:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        euler_asus__link_z_trans:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        euler_asus__rgb_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        euler_asus__rgb_link:
+        asus_link_x_trans:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_asus__rgb_optical_frame:
+        asus_link_y_trans:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        euler_base_link:
+        asus_link_yaw:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        euler_eef_eef_base:
+        asus_link_z_trans:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        euler_eef_eef_body:
+        asus_rgb_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        euler_eef_tcp:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        euler_frame_left:
+        asus_rgb_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_frame_right:
+        asus_rgb_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        eef_eef_base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        eef_eef_body:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_frame_top:
+        eef_tcp:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        frame_left:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_front_sick_s300:
+        frame_right:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_localization_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        euler_motoman_base_link:
+        frame_top:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_motoman_base_software:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        euler_motoman_link_b:
+        front_sick_s300:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_motoman_link_l:
+        localization_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        motoman_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_motoman_link_r:
+        motoman_base_software:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        motoman_link_b:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_motoman_link_s:
+        motoman_link_l:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_motoman_link_t:
+        motoman_link_r:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_motoman_link_u:
+        motoman_link_s:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_rear_sick_s300:
+        motoman_link_t:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_sick_nav350:
+        motoman_link_u:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_vetex_base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        euler_vetex_base_link:
+        rear_sick_s300:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_vetex_left_front_wheel:
+        sick_nav350:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_vetex_left_rear_wheel:
+        vetex_base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        vetex_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_vetex_right_front_wheel:
+        vetex_left_front_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        euler_vetex_right_rear_wheel:
+        vetex_left_rear_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vetex_right_front_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vetex_right_rear_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -238,151 +236,24 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: true
+      Enabled: false
       Frame Timeout: 15
       Frames:
-        All Enabled: false
-        euler_asus__frame:
-          Value: false
-        euler_asus__ir_link:
-          Value: false
-        euler_asus__ir_optical_frame:
-          Value: false
-        euler_asus__link:
-          Value: false
-        euler_asus__link_pitch:
-          Value: false
-        euler_asus__link_x_trans:
-          Value: false
-        euler_asus__link_y_trans:
-          Value: false
-        euler_asus__link_yaw:
-          Value: false
-        euler_asus__link_z_trans:
-          Value: false
-        euler_asus__rgb_frame:
-          Value: false
-        euler_asus__rgb_link:
-          Value: false
-        euler_asus__rgb_optical_frame:
-          Value: false
-        euler_base_link:
-          Value: false
-        euler_eef_eef_base:
-          Value: false
-        euler_eef_eef_body:
-          Value: false
-        euler_eef_tcp:
-          Value: false
-        euler_frame_left:
-          Value: false
-        euler_frame_right:
-          Value: false
-        euler_frame_top:
-          Value: false
-        euler_front_sick_s300:
-          Value: false
-        euler_localization_frame:
-          Value: false
-        euler_motoman_base_link:
-          Value: false
-        euler_motoman_base_software:
-          Value: false
-        euler_motoman_link_b:
-          Value: false
-        euler_motoman_link_l:
-          Value: false
-        euler_motoman_link_r:
-          Value: false
-        euler_motoman_link_s:
-          Value: false
-        euler_motoman_link_t:
-          Value: false
-        euler_motoman_link_u:
-          Value: false
-        euler_rear_sick_s300:
-          Value: false
-        euler_sick_nav350:
-          Value: false
-        euler_vetex_base_footprint:
-          Value: false
-        euler_vetex_base_link:
-          Value: false
-        euler_vetex_left_front_wheel:
-          Value: false
-        euler_vetex_left_rear_wheel:
-          Value: false
-        euler_vetex_right_front_wheel:
-          Value: false
-        euler_vetex_right_rear_wheel:
-          Value: false
+        All Enabled: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        euler_base_link:
-          euler_frame_left:
-            {}
-          euler_frame_right:
-            {}
-          euler_frame_top:
-            {}
-          euler_front_sick_s300:
-            {}
-          euler_localization_frame:
-            {}
-          euler_motoman_base_link:
-            euler_asus__link_x_trans:
-              euler_asus__link_y_trans:
-                euler_asus__link_z_trans:
-                  euler_asus__link_yaw:
-                    euler_asus__link_pitch:
-                      euler_asus__link:
-                        euler_asus__frame:
-                          euler_asus__ir_link:
-                            euler_asus__ir_optical_frame:
-                              {}
-                            euler_asus__rgb_link:
-                              euler_asus__rgb_optical_frame:
-                                euler_asus__rgb_frame:
-                                  {}
-            euler_motoman_base_software:
-              {}
-            euler_motoman_link_s:
-              euler_motoman_link_l:
-                euler_motoman_link_u:
-                  euler_motoman_link_r:
-                    euler_motoman_link_b:
-                      euler_motoman_link_t:
-                        euler_eef_eef_base:
-                          euler_eef_eef_body:
-                            {}
-                          euler_eef_tcp:
-                            {}
-          euler_rear_sick_s300:
-            {}
-          euler_sick_nav350:
-            {}
-          euler_vetex_base_link:
-            euler_vetex_base_footprint:
-              {}
-            euler_vetex_left_front_wheel:
-              {}
-            euler_vetex_left_rear_wheel:
-              {}
-            euler_vetex_right_front_wheel:
-              {}
-            euler_vetex_right_rear_wheel:
-              {}
+        {}
       Update Interval: 0
-      Value: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: euler_base_link
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -406,26 +277,26 @@ Visualization Manager:
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -0.499348015
+        Y: 0.136412144
+        Z: 0.767803431
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.64539814
+      Pitch: 0.385398388
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.36858511
+      Yaw: 5.53858805
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
   Height: 1000
   Hide Left Dock: false
-  Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000016a000003a2fc0200000005fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000028000003a2000000d700ffffff000000010000010f000003a2fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730100000028000003a2000000ad00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004a00000003efc0100000002fb0000000800540069006d00650000000000000004a00000030000fffffffb0000000800540069006d006501000000000000045000000000000000000000027b000003a200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Hide Right Dock: true
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a000003a6fc0200000005fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006f00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000028000003a6000000f300ffffff000000010000010f000003a6fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000028000003a6000000bb00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004a00000003efc0100000002fb0000000800540069006d00650000000000000004a00000027600fffffffb0000000800540069006d006501000000000000045000000000000000000000034f000003a600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -433,7 +304,7 @@ Window Geometry:
   Tool Properties:
     collapsed: false
   Views:
-    collapsed: false
-  Width: 1280
+    collapsed: true
+  Width: 1215
   X: 65
-  Y: 60
+  Y: 24
