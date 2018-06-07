@@ -1,12 +1,11 @@
-
 <launch>
   <include file="$(find euler_support)/launch/load_euler.launch" />
-	<param name="use_gui" value="true" />
-        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
-          <rosparam>
-            source_list: [/mutable_joint_states, /robot_joint_states]
-          </rosparam>
-        </node>
-	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+    <param name="use_gui" value="true" />
+    <rosparam>
+      source_list: [/mutable_joint_states, /robot_joint_states]
+    </rosparam>
+  </node>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find euler_support)/config/robot_state_visualize.rviz" required="true" />
 </launch>
