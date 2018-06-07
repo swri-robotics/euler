@@ -6,7 +6,7 @@
 <xacro:macro name="asus_xtion_pro" params="sensor_name off_x off_y off_z off_rr off_rp off_ry">
   <property name="M_PI" value="3.14159"/>
 
-  <link name="${sensor_name}_bodycenter">
+  <link name="${sensor_name}bodycenter">
     <visual>
       <origin xyz="0 0 0 " rpy="0 0 0" />
       <geometry>
@@ -25,9 +25,9 @@
     </collision>
   </link>
 
-  <joint name="${sensor_name}base-bodycenter-prism-x" type="fixed">
+  <joint name="${sensor_name}_base_bodycenter_prism_x" type="fixed">
     <origin xyz="${off_x} ${off_y} ${off_z}" rpy="${off_rr} ${off_rp} ${off_ry}" />
-    <parent link="base_link" />
+    <parent link="euler_base_link" />
     <child link="${sensor_name}bodycenter" />
   </joint>
 

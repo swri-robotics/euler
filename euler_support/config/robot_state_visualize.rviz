@@ -8,6 +8,7 @@ Panels:
         - /Status1
         - /RobotModel1
         - /TF1
+        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 787
   - Class: rviz/Selection
@@ -240,81 +241,81 @@ Visualization Manager:
       Enabled: true
       Frame Timeout: 15
       Frames:
-        All Enabled: true
+        All Enabled: false
         euler_asus__frame:
-          Value: true
+          Value: false
         euler_asus__ir_link:
-          Value: true
+          Value: false
         euler_asus__ir_optical_frame:
-          Value: true
+          Value: false
         euler_asus__link:
-          Value: true
+          Value: false
         euler_asus__link_pitch:
-          Value: true
+          Value: false
         euler_asus__link_x_trans:
-          Value: true
+          Value: false
         euler_asus__link_y_trans:
-          Value: true
+          Value: false
         euler_asus__link_yaw:
-          Value: true
+          Value: false
         euler_asus__link_z_trans:
-          Value: true
+          Value: false
         euler_asus__rgb_frame:
-          Value: true
+          Value: false
         euler_asus__rgb_link:
-          Value: true
+          Value: false
         euler_asus__rgb_optical_frame:
-          Value: true
+          Value: false
         euler_base_link:
-          Value: true
+          Value: false
         euler_eef_eef_base:
-          Value: true
+          Value: false
         euler_eef_eef_body:
-          Value: true
+          Value: false
         euler_eef_tcp:
-          Value: true
+          Value: false
         euler_frame_left:
-          Value: true
+          Value: false
         euler_frame_right:
-          Value: true
+          Value: false
         euler_frame_top:
-          Value: true
+          Value: false
         euler_front_sick_s300:
-          Value: true
+          Value: false
         euler_localization_frame:
-          Value: true
+          Value: false
         euler_motoman_base_link:
-          Value: true
+          Value: false
         euler_motoman_base_software:
-          Value: true
+          Value: false
         euler_motoman_link_b:
-          Value: true
+          Value: false
         euler_motoman_link_l:
-          Value: true
+          Value: false
         euler_motoman_link_r:
-          Value: true
+          Value: false
         euler_motoman_link_s:
-          Value: true
+          Value: false
         euler_motoman_link_t:
-          Value: true
+          Value: false
         euler_motoman_link_u:
-          Value: true
+          Value: false
         euler_rear_sick_s300:
-          Value: true
+          Value: false
         euler_sick_nav350:
-          Value: true
+          Value: false
         euler_vetex_base_footprint:
-          Value: true
+          Value: false
         euler_vetex_base_link:
-          Value: true
+          Value: false
         euler_vetex_left_front_wheel:
-          Value: true
+          Value: false
         euler_vetex_left_rear_wheel:
-          Value: true
+          Value: false
         euler_vetex_right_front_wheel:
-          Value: true
+          Value: false
         euler_vetex_right_rear_wheel:
-          Value: true
+          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
@@ -398,7 +399,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.35924911
+      Distance: 6.78283501
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -413,10 +414,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.415398031
+      Pitch: 0.64539814
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.430399001
+      Yaw: 5.36858511
     Saved: ~
 Window Geometry:
   Displays:

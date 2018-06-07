@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
 <robot name="euler" xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:include filename="$(find euler_support)/urdf/euler_macro.xacro" />
-    <xacro:euler prefix="euler_"/>
+  <xacro:arg name="robot_description" default="euler_"/>
+
+  <xacro:include filename="$(find euler_support)/urdf/euler_macro.xacro" />
+  <xacro:euler prefix="$(arg robot_description)"/>
 
 </robot>

@@ -10,18 +10,18 @@
     <link name="${prefix}eef_base"/>
     <link name="${prefix}eef_body">
       <visual>
-          <origin xyz="0 0 0" rpy="0 0 0" />
-          <geometry>
-                  <mesh filename="package://euler_support/meshes/visual/vacuum_gripper.stl" />
-          </geometry>
-          <material name="eef_color"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://euler_support/meshes/visual/vacuum_gripper.stl" />
+        </geometry>
+        <material name="eef_color"/>
       </visual>
       <collision>
-          <origin xyz="0 0 0" rpy="0 0 0" />
-          <geometry>
-                  <mesh filename="package://euler_support/meshes/collision/vacuum_gripper.stl" />
-          </geometry>
-          <material name="eef_color"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://euler_support/meshes/collision/vacuum_gripper.stl" />
+        </geometry>
+        <material name="eef_color"/>
       </collision>
     </link>
     <link name="${prefix}tcp"/>
