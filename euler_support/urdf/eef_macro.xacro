@@ -28,13 +28,13 @@
     <joint name="${prefix}eef_base_to_${prefix}eef_body" type="fixed">
       <parent link="${prefix}eef_base" />
       <child link="${prefix}eef_body" />
-      <origin xyz="0 0 0" rpy="-1.57 0 1.57" />
+      <origin xyz="0 0 0" rpy="-${radians(90)} 0 ${radians(90)}" />
     </joint>
 
     <joint name="${prefix}eef_base_to_${prefix}tcp" type="fixed">
       <parent link="${prefix}eef_base" />
       <child link="${prefix}tcp" />
-      <origin xyz="0 0 0.17" rpy="0 0 0" />
+      <origin xyz="0 0 0.085" rpy="0 0 0" />
     </joint>
   </xacro:macro>
 </robot>
