@@ -1,10 +1,9 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-
   <xacro:macro name="eef" params="prefix">
 
     <material name="${prefix}eef_color">
-            <color rgba="0.5 0.5 0.5 1" />        
+      <color rgba="0.5 0.5 0.5 1" />
     </material>
 
     <link name="${prefix}eef_base"/>
@@ -14,14 +13,14 @@
         <geometry>
           <mesh filename="package://euler_support/meshes/visual/vacuum_gripper.stl" />
         </geometry>
-        <material name="eef_color"/>
+        <material name="${prefix}eef_color"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://euler_support/meshes/collision/vacuum_gripper.stl" />
         </geometry>
-        <material name="eef_color"/>
+        <material name="${prefix}eef_color"/>
       </collision>
     </link>
     <link name="${prefix}tcp"/>
@@ -37,7 +36,5 @@
       <child link="${prefix}tcp" />
       <origin xyz="0 0 0.17" rpy="0 0 0" />
     </joint>
-
   </xacro:macro>
-
 </robot>
