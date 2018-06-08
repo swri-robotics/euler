@@ -9,8 +9,9 @@
     <xacro:include filename="$(find industrial_extrinsic_cal)/urdf/asus_sensor_cal_macro.xacro"/>
     <xacro:asus_sensor_definitions prefix="${prefix}asus" parent_link="${robot_prefix}base_link"/>
     <!-- End effector -->
+    <xacro:property name="eef_prefix" value="eef_"/>
     <xacro:include filename="$(find euler_support)/urdf/eef_macro.xacro"/>
-    <xacro:eef prefix="${prefix}eef_"/>
+    <xacro:eef prefix="${prefix+eef_prefix}"/>
     <!-- Mobile Platform -->
     <xacro:include filename="$(find vetex_support)/urdf/vetex_macro.xacro"/>
     <xacro:vetex prefix="${prefix}vetex_"/>
@@ -169,9 +170,9 @@
       <axis xyz="0 0 0"/>
     </joint>
     <!--motoman to end effector link-->
-    <joint name="${prefix+robot_prefix}link_t_to_eef_base" type="fixed">
+    <joint name="${prefix+robot_prefix}link_t_to_${eef_prefix}base_link" type="fixed">
       <parent link="${prefix+robot_prefix}link_t"/>
-      <child link="${prefix}eef_eef_base"/>
+      <child link="${prefix+eef_prefix}base_link"/>
       <origin xyz="0.098 0 0" rpy="0 1.57 0"/>
     </joint>
   </xacro:macro>

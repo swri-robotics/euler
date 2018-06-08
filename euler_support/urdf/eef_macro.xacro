@@ -2,37 +2,37 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="eef" params="prefix">
 
-    <material name="${prefix}eef_color">
+    <material name="${prefix}color">
       <color rgba="0.5 0.5 0.5 1" />
     </material>
 
-    <link name="${prefix}eef_base"/>
-    <link name="${prefix}eef_body">
+    <link name="${prefix}base_link"/>
+    <link name="${prefix}body">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://euler_support/meshes/visual/vacuum_gripper.stl" />
         </geometry>
-        <material name="${prefix}eef_color"/>
+        <material name="${prefix}color"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://euler_support/meshes/collision/vacuum_gripper.stl" />
         </geometry>
-        <material name="${prefix}eef_color"/>
+        <material name="${prefix}color"/>
       </collision>
     </link>
     <link name="${prefix}tcp"/>
 
-    <joint name="${prefix}eef_base_to_${prefix}eef_body" type="fixed">
-      <parent link="${prefix}eef_base" />
-      <child link="${prefix}eef_body" />
+    <joint name="${prefix}body_to_base_link" type="fixed">
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}body" />
       <origin xyz="0 0 0" rpy="-${radians(90)} 0 ${radians(90)}" />
     </joint>
 
-    <joint name="${prefix}eef_base_to_${prefix}tcp" type="fixed">
-      <parent link="${prefix}eef_base" />
+    <joint name="${prefix}tcp_to_base_link" type="fixed">
+      <parent link="${prefix}base_link" />
       <child link="${prefix}tcp" />
       <origin xyz="0 0 0.085" rpy="0 0 0" />
     </joint>
